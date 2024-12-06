@@ -2,11 +2,11 @@ import './style.scss';
 type Props = {
   label: string;
   id: string;
+  onClick: (id: string) => void;
 };
-export const Title = ({ label, id }: Props) => {
+export const Title = ({ label, id, onClick }: Props) => {
   const handleClick = () => {
-    const target = document.body.querySelector(`#${id}`);
-    target?.scrollIntoView();
+    onClick(id);
   };
   return (
     <li className="title" onClick={handleClick}>
