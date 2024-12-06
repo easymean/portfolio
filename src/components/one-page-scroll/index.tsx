@@ -10,6 +10,7 @@ type Props = {
 
 export const ScrollContainer = ({ children }: Props) => {
   const [page, setPage] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const lastPage = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -24,23 +25,29 @@ export const ScrollContainer = ({ children }: Props) => {
     setPage(nextPage);
   };
 
-  const handleWheel: React.WheelEventHandler<HTMLDivElement> = useCallback((ev) => {
-    let nextPage = page;
+  const handleWheel: React.WheelEventHandler<HTMLDivElement> = useCallback(
+    (ev) => {
+      if (isScrolling) return;
+      setIsScrolling(true);
 
-    if (ev.deltaY > 0) {
-      nextPage += 1;
-    }
+      let nextPage = page;
 
-    if (ev.deltaY < 0) {
-      nextPage -= 1;
-    }
+      if (ev.deltaY > 0) {
+        nextPage += 1;
+      }
 
-    nextPage = correctPage(nextPage);
+      if (ev.deltaY < 0) {
+        nextPage -= 1;
+      }
 
-    const target = ev.currentTarget as HTMLElement;
-    target.style.top = nextPage * -100 + 'vh';
-    setPage(nextPage);
-  }, []);
+      nextPage = correctPage(nextPage);
+
+      const target = ev.currentTarget as HTMLElement;
+      moveToPage(target, nextPage);
+      setTimeout(() => setIsScrolling(false), 1000);
+    },
+    [page, isScrolling],
+  );
 
   const handleClickMove = (id: string) => {
     if (containerRef.current) {
