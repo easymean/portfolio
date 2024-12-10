@@ -1,11 +1,20 @@
-@mixin fadeIn {
-  animation-name: fade-in;
-  animation-duration: calc(var(--animation-opacity-duration) * 1s);
+@mixin textMoveFadeIn {
+  animation-name: fade-in, move-in;
+  animation-duration: calc(var(--animation-opacity-duration) * 1s),
+    calc(var(--animation-translate-duration) * 1s);
+  animation-timing-function: ease-in-out;
   animation-fill-mode: both;
 }
 
 //animation
 @keyframes move-in {
+  0% {
+    transform: translateY(4rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
@@ -15,5 +24,24 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    margin-left: 100%;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    margin-left: -100%;
+  }
+  100% {
+    margin-left: 0%;
   }
 }
