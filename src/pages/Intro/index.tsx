@@ -3,8 +3,8 @@ import './style.scss';
 export const Infro = () => {
   return (
     <div className="about">
-      <div className="title move-in">Frontend Developer</div>
-      <div className="title move-in">LEE JIMIN</div>
+      <div className="title move-in-1">Frontend Developer</div>
+      <div className="title move-in-2">LEE JIMIN</div>
     </div>
   );
 };

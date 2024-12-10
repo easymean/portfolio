@@ -10,7 +10,11 @@
 .title {
   width: 100%;
   font-size: 4rem;
-  &.move-in {
+  &.move-in-1 {
     @include textMoveFadeIn;
+  }
+  &.move-in-2 {
+    @include textMoveFadeIn;
+    animation-delay: 0.8s;
   }
 }
