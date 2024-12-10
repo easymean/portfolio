@@ -1,5 +1,6 @@
-@use './reset.scss' as *;
-@use './tokens.scss' as *;
+@use './_reset.scss' as *;
+@use './_tokens.scss' as *;
+@use './_animations.scss' as *;
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
