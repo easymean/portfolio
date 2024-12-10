@@ -1,7 +1,7 @@
 import './App.css';
-import { Infro } from './pages/Intro';
-import { Projects } from './pages/projects';
-import { Skills } from './pages/skills';
+import { Infro } from '@/pages/Intro';
+import { Projects } from '@/pages/projects';
+import { Skills } from '@/pages/skills';
 
 function App() {
   return (
