@@ -1,6 +1,14 @@
-@import 'tokens.scss';
+@use './reset.scss' as *;
+@use './tokens.scss' as *;
 
 :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   --color-bg-container: light-dark(#{$white}, #{$black});
   --color-text: light-dark(#{$black}, #{$white});
 
@@ -9,4 +17,6 @@
   --color-grey: light-dark(#{$light-grey}, #{$dark-grey});
   --color-blue: light-dark(#{$light-blue}, #{$dark-blue});
   --color-green: light-dark(#{$light-green}, #{$dark-green});
+
+  --animation-opacity-duration: #{$opacity-duration};
 }
