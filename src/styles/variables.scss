@@ -1,0 +1,12 @@
+@import 'tokens.scss';
+
+:root {
+  --color-bg-container: light-dark(#{$white}, #{$black});
+  --color-text: light-dark(#{$black}, #{$white});
+
+  --color-black: #{$black};
+  --color-white: #{$white};
+  --color-grey: light-dark(#{$light-grey}, #{$dark-grey});
+  --color-blue: light-dark(#{$light-blue}, #{$dark-blue});
+  --color-green: light-dark(#{$light-green}, #{$dark-green});
+}

@@ -1,0 +1,38 @@
+.about {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  gap: 6rem;
+}
+
+.title {
+  width: 100%;
+  font-size: 4rem;
+  &.slide-left {
+    animation: slide-left 2s ease-in-out;
+  }
+  &.slide-right {
+    animation: slide-right 2s ease-in-out;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    margin-left: -100%;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
+}
