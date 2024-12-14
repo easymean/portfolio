@@ -6,18 +6,8 @@
   animation-fill-mode: both;
 }
 
-@mixin textMoveFadeOut {
-  animation-name: fade-out, move-out;
-  animation-duration: calc(0.9 * 1s), calc(0.7 * 1s);
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
-}
-
 @mixin page {
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }

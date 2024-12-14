@@ -11,17 +11,19 @@ export const Infro = () => {
           ...(container.current?.querySelectorAll('.title') ?? []),
         ] as HTMLElement[];
         if (entry.isIntersecting) {
-          divs.forEach((el) => {
+          divs.forEach((el, idx) => {
+            el.classList.remove(`move-in-${idx + 1}`);
             el.classList.add(`move-out`);
           });
         } else {
-          divs.forEach((el) => {
+          divs.forEach((el, idx) => {
+            el.classList.add(`move-in-${idx + 1}`);
             el.classList.remove(`move-out`);
           });
         }
       },
       {
-        threshold: 0.1,
+        threshold: 0.2,
       },
     );
 
@@ -36,8 +38,10 @@ export const Infro = () => {
 
   return (
     <div className="about" ref={container}>
-      <div className="title move-in-1">Frontend Developer</div>
-      <div className="title move-in-2">LEE JIMIN</div>
+      <div className="title-wrapper">
+        <div className="title stroke move-in-1">Frontend Developer</div>
+        <div className="title move-in-2">LEE JIMIN</div>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,20 @@
 @keyframes move-in {
   0% {
-    transform: translateY(4rem);
+    transform: translateY(1rem);
   }
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes move-out {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(1rem);
   }
 }
 
@@ -22,6 +32,7 @@
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -29,19 +40,19 @@
 
 @keyframes slide-left {
   0% {
-    margin-left: 100%;
+    transform: translateX(-100%);
   }
 
   100% {
-    margin-left: 0%;
+    transform: translateX(0);
   }
 }
 
 @keyframes slide-right {
   0% {
-    margin-left: -100%;
+    transform: translateX(100%);
   }
   100% {
-    margin-left: 0%;
+    transform: translateX(0);
   }
 }
