@@ -1,3 +1,18 @@
 .skills {
-  @include page;
+  padding: 0 10rem;
+}
+.skills-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .title {
+    padding: 2rem;
+    font-size: 2rem;
+    box-sizing: border-box;
+  }
+  .move-in {
+    animation-name: fade-in, move-in;
+    animation-duration: 0.7s, 0.7s;
+    animation-timing-function: ease-in-out;
+  }
 }

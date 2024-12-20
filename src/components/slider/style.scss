@@ -1,0 +1,17 @@
+.slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider-list {
+  position: relative;
+  display: grid;
+  grid-gap: 4rem;
+  grid-auto-flow: column;
+  transform: translate3d(var(--dist, 0px), 0, 0);
+  transition: all 300ms ease-in-out;
+  .slider-item {
+    &[aria-selected='true'] {
+    }
+  }
+}
