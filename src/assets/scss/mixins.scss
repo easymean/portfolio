@@ -11,3 +11,38 @@
   height: 100vh;
   position: relative;
 }
+
+@mixin text-caption-1-l {
+  font: 'Pretendard Light';
+  line-height: 1rem;
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+@mixin text-normal-2-r {
+  font-family: 'Pretendard Regular';
+  line-height: 1.75rem;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+@mixin text-normal-2-b {
+  font-family: 'Pretendard Bold';
+  line-height: 1.75rem;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+@mixin text-normal-3-b {
+  font-family: 'Pretendard Bold';
+  line-height: 2.25rem;
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+@mixin text-title-1-b {
+  font-family: 'Pretendard Bold';
+  line-height: 3.75rem;
+  font-size: 3rem;
+  vertical-align: middle;
+}

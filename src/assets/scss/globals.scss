@@ -17,7 +17,9 @@
   --color-black: #{$black};
   --color-white: #{$white};
   --color-grey: light-dark(#{$light-grey}, #{$dark-grey});
+  --color-grey-100: light-dark(#{$light-grey-100}, #{$dark-grey-100});
   --color-blue: light-dark(#{$light-blue}, #{$dark-blue});
+  --color-blue-100: light-dark(#{$light-blue-100}, #{$dark-blue-100});
   --color-green: light-dark(#{$light-green}, #{$dark-green});
 
   --animation-opacity-duration: #{$opacity-duration};

@@ -1,5 +1,6 @@
 import './style.scss';
 import React, { useEffect, useRef, useState } from 'react';
+
 type Props = {
   items: { id: string; label: string; content: React.ReactNode }[];
   onClickItem: (id: string) => void;
@@ -33,7 +34,12 @@ export const Tab = ({ items, onClickItem }: Props) => {
 
   useEffect(() => {
     if (activeItemRef.current) {
-      setIndicator(activeItemRef.current);
+      const item = activeItemRef.current;
+      setIndicator(item);
+      window.addEventListener('resize', () => setIndicator(item));
+      return () => {
+        window.removeEventListener('resize', () => setIndicator(item));
+      };
     }
   }, [selectedId]);
   return (
