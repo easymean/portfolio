@@ -3,7 +3,7 @@ import './style.scss';
 
 type Props = {
   selectedId: string;
-  colWidth: number;
+  colWidth: string;
   items: { id: string; content: React.ReactNode }[];
 };
 
@@ -12,21 +12,18 @@ export const Slider = ({ items = [], colWidth, selectedId }: Props) => {
 
   const slideItem = useCallback(
     (container: HTMLElement, id: string) => {
-      const getCenterX = (container: HTMLElement) => {
-        const rect = container.getBoundingClientRect();
-        const width = rect?.width ?? 0;
-        return (width - colWidth) / 2;
-      };
-
       const [target] = [...container.querySelectorAll('.slider-item')].filter(
         (el) => el.id === id,
       );
       if (target instanceof HTMLElement) {
         const { offsetLeft } = target;
-        const centerX = getCenterX(container);
+        const rect = container.getBoundingClientRect();
+        const width = rect?.width ?? 0;
 
-        const dist = centerX - offsetLeft;
-        container.style.setProperty('--dist', `${dist}px`);
+        container.style.setProperty(
+          '--dist',
+          `calc((${width}px - ${colWidth}) / 2 - ${offsetLeft}px)`,
+        );
       }
     },
     [colWidth],
