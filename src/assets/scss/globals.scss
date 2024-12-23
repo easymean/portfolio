@@ -11,6 +11,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   --color-bg-container: light-dark(#{$white}, #{$black});
+  --color-bg-card: light-dark(#{$light-grey}, #{$dark-grey});
+
   --color-text: light-dark(#{$black}, #{$white});
   --color-text-secondary: light-dark(#{$light-grey}, #{$dark-grey});
 

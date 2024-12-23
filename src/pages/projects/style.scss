@@ -1,3 +1,21 @@
 .projects {
-  @include page;
+  padding: 0 2rem;
+}
+.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title {
+    padding: 2rem;
+    box-sizing: border-box;
+    @include text-title-1-b;
+  }
+}
+
+.slide-content-wrapper {
+  height: 20rem;
+}
+
+.card-wrapper {
 }
