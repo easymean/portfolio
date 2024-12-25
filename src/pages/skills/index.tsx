@@ -1,7 +1,7 @@
 import { Tab } from '@/components/tab';
 import { Slider } from '@/components/slider';
 import './style.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ProgressBar } from './ProgressBar';
 
 export const Skills = () => {
@@ -47,7 +47,7 @@ export const Skills = () => {
     },
     {
       id: 'db',
-      content: <BeContent />,
+      content: <DbContent />,
     },
   ];
 
@@ -55,11 +55,36 @@ export const Skills = () => {
     setSelectedId(id);
   };
 
+  const observer = useRef<IntersectionObserver>();
+  const observeTarget = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    observer.current = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observeTarget.current?.classList.add('move-in');
+        } else {
+          observeTarget.current?.classList.remove('move-in');
+        }
+      },
+      {
+        threshold: 0.6,
+      },
+    );
+
+    if (observer.current && observeTarget.current) {
+      observer.current.observe(observeTarget.current);
+      return () => {
+        observer.current?.disconnect();
+      };
+    }
+  }, []);
+
   return (
     <div className="skills">
-      <div className="skills-wrapper">
+      <div className="skills-wrapper" ref={observeTarget}>
         <div className="title">SKILLS</div>
-        <Slider items={sliders} selectedId={selectedId} colWidth={500} />
+        <Slider items={sliders} selectedId={selectedId} colWidth={'500px'} />
         <div className="tab-wrapper">
           <Tab items={items} onClickItem={onClickTab} />
         </div>
@@ -88,7 +113,22 @@ const BeContent = () => {
   const be = [
     { id: 'react', label: 'React', value: '80' },
     { id: 'vue', label: 'Vue3', value: '60' },
-    { id: 'vue', label: 'HTML/CSS', value: '80' },
+    { id: 'html', label: 'HTML/CSS', value: '80' },
+  ];
+  return (
+    <div className="slider-wrapper">
+      {be.map((el) => (
+        <ProgressBar {...el} key={el.id} />
+      ))}
+    </div>
+  );
+};
+
+const DbContent = () => {
+  const be = [
+    { id: 'react', label: 'React', value: '80' },
+    { id: 'vue', label: 'Vue3', value: '60' },
+    { id: 'html', label: 'HTML/CSS', value: '80' },
   ];
   return (
     <div className="slider-wrapper">
