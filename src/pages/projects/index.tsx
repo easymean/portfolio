@@ -1,87 +1,137 @@
-import { Slider } from '@/components/slider';
-import { CardSlider } from './CardSlider';
+import { ScrollContainer } from './ScrollContainer';
 import './style.scss';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+type DataType = {
+  id: string;
+  title: string;
+  groups: {
+    id: string;
+    description: string;
+    projects: { id: string; content: JSX.Element }[];
+  }[];
+};
+
+type Checkpoint = {
+  companyId: string;
+  groupId: string;
+  projectId: string;
+};
 
 export const Projects = () => {
-  const [selectedId, setSelectedId] = useState<string>('varco');
-  const middleSlider = [
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const [checkpoints, setCheckpoints] = useState<Checkpoint[]>([]);
+  const [projects, setProjects] = useState<
     {
-      id: 'varco',
-      content: <div className="slide-content-wrapper">varco</div>,
+      id: string;
+      content: JSX.Element;
+    }[]
+  >([]);
+  const [company, setCompany] = useState<string>('');
+  const [group, setGroup] = useState<string>('');
+
+  const data: DataType[] = [
+    {
+      id: 'ncsoft',
+      title: 'NCSOFT (22.01.02~',
+      groups: [
+        {
+          id: 'varco',
+          description: 'varco 개발실',
+          projects: [
+            { id: 'varcoart', content: <>varco art</> },
+            { id: 'varcoui', content: <>varco ui</> },
+            { id: 'varcotext', content: <>varco text</> },
+          ],
+        },
+        {
+          id: 'speechai',
+          description: 'speech ai 개발실',
+          projects: [
+            { id: 'designsystem', content: <div>design system</div> },
+            { id: 'speech', content: <>speech</> },
+          ],
+        },
+        {
+          id: 'miniverse',
+          description: 'miniverse 개발실',
+          projects: [{ id: 'miniverse', content: <>miniverse</> }],
+        },
+        {
+          id: 'bard',
+          description: 'BARD 개발실',
+          projects: [{ id: 'bard', content: <>bard</> }],
+        },
+      ],
     },
     {
-      id: 'speech',
-      content: <div className="slide-content-wrapper">speech</div>,
-    },
-    {
-      id: 'miniverse',
-      content: <div className="slide-content-wrapper">miniverse</div>,
-    },
-    { id: 'bard', content: <div className="slide-content-wrapper">bard</div> },
-  ];
-  const cards = [
-    {
-      groupId: 'varco',
-      id: 'varco art',
-      front: { content: <>front</> },
-      back: { content: <>back</> },
-    },
-    {
-      groupId: 'varco',
-      id: 'varco ui',
-      front: { content: <></> },
-      back: { content: <></> },
-    },
-    {
-      groupId: 'varco',
-      id: 'varco text',
-      front: { content: <></> },
-      back: { content: <></> },
-    },
-    {
-      groupId: 'varco',
-      id: 'design system',
-      front: { content: <></> },
-      back: { content: <></> },
-    },
-    {
-      groupId: 'varco',
-      id: 'speech',
-      front: { content: <></> },
-      back: { content: <></> },
-    },
-    {
-      groupId: 'miniverse',
-      id: 'miniverse',
-      front: { content: <></> },
-      back: { content: <></> },
-    },
-    {
-      groupId: 'bard',
-      id: 'bard',
-      front: { content: <></> },
-      back: { content: <></> },
+      id: 'sinsegae',
+      title: '신세계I&C (21.02~21.12)',
+      groups: [
+        {
+          id: 'emart2',
+          description: '이마트 2팀',
+          projects: [{ id: 'si', content: <>si</> }],
+        },
+      ],
     },
   ];
+
+  const isIntersecting = useCallback(
+    (projectId: string) => {
+      const [target] = checkpoints.filter((el) => el.projectId === projectId);
+      const [company] = data.filter((comp) => comp.id === target.companyId);
+      const [group] = company.groups.filter(
+        (group) => group.id === target.groupId,
+      );
+      setCompany(company.title);
+      setGroup(group.description);
+    },
+    [checkpoints],
+  );
+
+  useEffect(() => {
+    const initDataList = () => {
+      const newCheckpoints: Checkpoint[] = [];
+      const projects = data.reduce<{ id: string; content: JSX.Element }[]>(
+        (acc, cur) => {
+          const add = { companyId: cur.id, groupId: '', projectId: '' };
+
+          cur.groups.forEach((group) => {
+            newCheckpoints.push({
+              ...add,
+              groupId: group.id,
+              projectId: group.projects[0].id,
+            });
+            acc = [...acc, ...group.projects];
+          });
+          return acc;
+        },
+        [],
+      );
+      setCheckpoints([...newCheckpoints]);
+      setProjects(projects);
+    };
+    initDataList();
+  }, []);
+
   return (
     <div className="projects" ref={containerRef}>
       <div className="projects-wrapper">
         <div className="left">
           <div className="sticky-wrapper">
-        <div className="title">PROJECTS</div>
-              <p className="projects-company">{company}</p>
-              <p className="projects-group">{group}</p>
+            <div className="title">PROJECTS</div>
+            <p className="projects-company">{company}</p>
+            <p className="projects-group">{group}</p>
           </div>
         </div>
         <div className="right">
-          <div className="scroll-container">
-            {projects.map((el) => (
-              <div key={el.id} className="project-card">
-                {el.content}
-              </div>
-            ))}
-          </div>
+          <ScrollContainer
+            projects={projects}
+            observeTargetIds={checkpoints.map((el) => el.projectId)}
+            isIntersecting={isIntersecting}
+          />
         </div>
       </div>
     </div>
