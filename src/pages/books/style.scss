@@ -18,14 +18,12 @@
     box-sizing: border-box;
     @include text-title-1-b;
   }
-}
-
-.scroll-container {
-  width: 200vw;
-}
-.slide-content-wrapper {
-  height: 20rem;
-}
-
-.card-wrapper {
+  .scroll-container {
+    width: 200vw;
+  }
+  .slide-content-wrapper {
+    height: 20rem;
+  }
+  .card-wrapper {
+  }
 }
