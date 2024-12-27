@@ -70,10 +70,8 @@ export const Projects = () => {
         <div className="left">
           <div className="sticky-wrapper">
         <div className="title">PROJECTS</div>
-            <div className="projects-description">
               <p className="projects-company">{company}</p>
               <p className="projects-group">{group}</p>
-            </div>
           </div>
         </div>
         <div className="right">

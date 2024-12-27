@@ -1,7 +1,6 @@
 .projects {
   position: relative;
   margin: 0 2rem;
-  height: 250vh;
   .title {
     padding: 2rem;
     padding-top: 5rem;
@@ -12,17 +11,6 @@
     position: sticky;
     inset: 0;
   }
-  .left {
-    width: 50%;
-    height: 100%;
-    position: relative;
-  }
-  .right {
-    width: 50%;
-    height: 100%;
-    contain: paint;
-  }
-
   .scroll-container {
     display: grid;
     padding: 5rem 3rem;
@@ -41,13 +29,22 @@
 .projects-wrapper {
   padding-top: 5rem;
   box-sizing: border-box;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   height: 100%;
   position: relative;
+  .left {
+    height: 100%;
+    position: relative;
+  }
+  .right {
+    height: 100%;
+    contain: paint;
+  }
 }
 
 .project-card {
   padding: 2rem;
-  height: 10rem;
+  height: 15rem;
   border: 1px solid var(--color-text);
 }
