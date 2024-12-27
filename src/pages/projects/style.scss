@@ -1,21 +1,52 @@
 .projects {
-  padding: 0 2rem;
-}
-.projects-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  margin: 0 2rem;
+  padding: 10rem 0;
+  height: 100vh;
+  contain: paint;
+  .sticky-wrapper {
+    position: sticky;
+    inset: 0;
+  }
+  .left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+  }
+  .right {
+    width: 50%;
+    height: 100%;
+  }
   .title {
     padding: 2rem;
+    padding-top: 5rem;
     box-sizing: border-box;
     @include text-title-1-b;
   }
+  .scroll-container {
+    display: grid;
+    padding: 0 3rem;
+    row-gap: 3rem;
+  }
+}
+.projects-description {
+  padding: 0 3rem;
+  .projects-company {
+    @include text-title-1-b;
+  }
+  .projects-group {
+  }
 }
 
-.slide-content-wrapper {
-  height: 20rem;
+.projects-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
 }
 
-.card-wrapper {
+.project-card {
+  padding: 2rem;
+  border: 1px solid var(--color-text);
 }

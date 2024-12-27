@@ -65,15 +65,26 @@ export const Projects = () => {
     },
   ];
   return (
-    <div className="projects">
+    <div className="projects" ref={containerRef}>
       <div className="projects-wrapper">
+        <div className="left">
+          <div className="sticky-wrapper">
         <div className="title">PROJECTS</div>
-        <Slider
-          items={middleSlider}
-          colWidth={'100%'}
-          selectedId={selectedId}
-        />
-        <CardSlider items={cards} />
+            <div className="projects-description">
+              <p className="projects-company">{company}</p>
+              <p className="projects-group">{group}</p>
+            </div>
+          </div>
+        </div>
+        <div className="right">
+          <div className="scroll-container">
+            {projects.map((el) => (
+              <div key={el.id} className="project-card">
+                {el.content}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
