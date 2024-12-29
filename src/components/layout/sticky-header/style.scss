@@ -2,8 +2,9 @@
   position: sticky;
   inset: 0;
   z-index: 1;
-  height: 2.5rem;
+  height: var(--header-height);
   padding: 1rem 2rem;
+  box-sizing: border-box;
   display: flex;
   justify-content: right;
   background-color: var(--color-bg-container);

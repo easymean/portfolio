@@ -21,8 +21,8 @@
 
 @mixin text-normal-2-r {
   font-family: 'Pretendard Regular';
-  line-height: 1.75rem;
-  font-size: 1rem;
+  line-height: 2.75rem;
+  font-size: 2rem;
   vertical-align: middle;
 }
 
@@ -42,7 +42,14 @@
 
 @mixin text-title-1-b {
   font-family: 'Pretendard Bold';
-  line-height: 3.75rem;
+  line-height: 5.25rem;
+  font-size: 4rem;
+  vertical-align: middle;
+}
+
+@mixin text-title-2-b {
+  font-family: 'Pretendard Bold';
+  line-height: 4.25rem;
   font-size: 3rem;
   vertical-align: middle;
 }

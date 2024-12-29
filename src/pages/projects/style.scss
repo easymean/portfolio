@@ -8,9 +8,11 @@
     @include text-title-1-b;
   }
   .company {
+    margin: 3rem 0;
     @include text-title-2-b;
   }
   .group {
+    margin-top: 2rem;
     @include text-normal-2-r;
   }
   .sticky-wrapper {

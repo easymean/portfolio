@@ -11,7 +11,6 @@ export const StickyHeader = () => {
     localStorage.setItem('theme', themeAsEnum);
     const app = document.body.querySelector('.app') as HTMLElement;
     if (app) {
-      console.log(app);
       app.style.colorScheme = themeAsEnum;
     }
   };
