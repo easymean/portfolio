@@ -6,7 +6,7 @@ type Props = {
     groupId: string;
   } & CardProps)[];
 };
-export const CardSlider = React.forwardRef<HTMLUListElement, Props>(
+export const CardList = React.forwardRef<HTMLUListElement, Props>(
   ({ items = [] }, ref) => {
     return (
       <div className="card-slider">

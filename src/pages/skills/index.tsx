@@ -1,5 +1,5 @@
 import { Tab } from '@/components/tab';
-import { Slider } from '@/components/slider';
+import { Carousel } from '@/components/carousel';
 import './style.scss';
 import { useEffect, useRef, useState } from 'react';
 import { ProgressBar } from './ProgressBar';
@@ -84,7 +84,7 @@ export const Skills = () => {
     <div className="skills">
       <div className="skills-wrapper" ref={observeTarget}>
         <div className="title">SKILLS</div>
-        <Slider items={sliders} selectedId={selectedId} colWidth={'500px'} />
+        <Carousel items={sliders} selectedId={selectedId} colWidth={'500px'} />
         <div className="tab-wrapper">
           <Tab items={items} onClickItem={onClickTab} />
         </div>

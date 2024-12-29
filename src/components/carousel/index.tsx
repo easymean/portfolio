@@ -7,12 +7,12 @@ type Props = {
   items: { id: string; content: React.ReactNode }[];
 };
 
-export const Slider = ({ items = [], colWidth, selectedId }: Props) => {
+export const Carousel = ({ items = [], colWidth, selectedId }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const slideItem = useCallback(
     (container: HTMLElement, id: string) => {
-      const [target] = [...container.querySelectorAll('.slider-item')].filter(
+      const [target] = [...container.querySelectorAll('.carousel-item')].filter(
         (el) => el.id === id,
       );
       if (target instanceof HTMLElement) {
@@ -47,14 +47,14 @@ export const Slider = ({ items = [], colWidth, selectedId }: Props) => {
   }, [selectedId, slideItem]);
 
   return (
-    <div className="slider">
-      <div className="slider-list" ref={containerRef}>
+    <div className="carousel">
+      <div className="carousel-list" ref={containerRef}>
         {items.length > 0 &&
           items.map((el) => (
             <div
               key={el.id}
               id={el.id}
-              className="slider-item"
+              className="carousel-item"
               aria-selected={el.id === selectedId}
               style={{ width: `${colWidth}px` }}
             >

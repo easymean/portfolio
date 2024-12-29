@@ -1,5 +1,5 @@
-import { Slider } from '@/components/slider';
-import { CardSlider } from './card-slider';
+import { Carousel } from '@/components/carousel';
+import { CardList } from './card-list';
 import './style.scss';
 import { useEffect, useRef, useState } from 'react';
 
@@ -97,13 +97,13 @@ export const Books = () => {
     <div className="books" ref={containerRef}>
       <div className="books-wrapper">
         <div className="title">BOOKS</div>
-        <Slider
+        <Carousel
           items={middleSlider}
           colWidth={'100%'}
           selectedId={selectedId}
         />
         <div className="scroll-container">
-          <CardSlider items={cards} ref={scrollRef} />
+          <CardList items={cards} ref={scrollRef} />
         </div>
       </div>
     </div>
