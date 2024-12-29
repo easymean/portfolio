@@ -1,4 +1,4 @@
-import { FadeText } from '@/components/fadeText';
+import { FadeText } from '@/components/fade-text';
 import { ScrollContainer } from './ScrollContainer';
 import './style.scss';
 import { useCallback, useEffect, useRef, useState } from 'react';

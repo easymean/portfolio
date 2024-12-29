@@ -1,5 +1,5 @@
 import { Slider } from '@/components/slider';
-import { CardSlider } from './CardSlider';
+import { CardSlider } from './card-slider';
 import './style.scss';
 import { useEffect, useRef, useState } from 'react';
 
