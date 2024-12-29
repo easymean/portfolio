@@ -1,3 +1,4 @@
+import { FadeText } from '@/components/fadeText';
 import { ScrollContainer } from './ScrollContainer';
 import './style.scss';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -122,8 +123,8 @@ export const Projects = () => {
         <div className="left">
           <div className="sticky-wrapper">
             <div className="title">PROJECTS</div>
-            <p className="projects-company">{company}</p>
-            <p className="projects-group">{group}</p>
+            <FadeText text={company} classname="company" />
+            <FadeText text={group} classname="group" />
           </div>
         </div>
         <div className="right">
