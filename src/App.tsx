@@ -11,8 +11,8 @@ function App() {
       <StickyHeader />
       <Infro />
       <Skills />
-      <Books />
       <Projects />
+      <Books />
     </div>
   );
 }

@@ -19,6 +19,13 @@
   vertical-align: middle;
 }
 
+@mixin text-normal-1-r {
+  font-family: 'Pretendard Regular';
+  line-height: 2.25rem;
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
 @mixin text-normal-2-r {
   font-family: 'Pretendard Regular';
   line-height: 2.75rem;

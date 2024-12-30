@@ -21,7 +21,7 @@
   }
   .scroll-container {
     display: grid;
-    padding: 50rem 3rem;
+    padding: 40rem 3rem;
     row-gap: 3rem;
     position: relative;
     z-index: 1;
@@ -53,8 +53,16 @@
   }
 }
 
-.project-card {
-  padding: 2rem;
-  height: 15rem;
-  border: 1px solid var(--color-text);
+.project-card-container {
+  padding: 2.5rem 2rem;
+  background-color: var(--color-bg-card);
+  border-radius: 1.5rem;
+  .card-title {
+    @include text-normal-2-r;
+  }
+  .card-description {
+    margin-top: 2rem;
+    text-align: left;
+    @include text-normal-1-r;
+  }
 }

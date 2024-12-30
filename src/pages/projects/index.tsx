@@ -39,30 +39,90 @@ export const Projects = () => {
       groups: [
         {
           id: 'varco',
-          description: 'varco 개발실',
+          description: 'VARCO 개발실 AI 서비스 FE 개발(2024.01~현재)',
           projects: [
-            { id: 'varcoart', content: <>varco art</> },
-            { id: 'varcoui', content: <>varco ui</> },
-            { id: 'varcotext', content: <>varco text</> },
+            {
+              id: 'varcoadmin',
+              content: (
+                <Card
+                  title="VARCO Art Admin"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
+            {
+              id: 'varcoui',
+              content: (
+                <Card
+                  title="VARCO UI"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
+            {
+              id: 'varcotext',
+              content: (
+                <Card
+                  title="VARCO Text"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
           ],
         },
         {
           id: 'speechai',
-          description: 'speech ai 개발실',
+          description: '음성AI랩 AI 프로젝트 FE 개발(2023.05~2023.12)',
           projects: [
-            { id: 'designsystem', content: <div>design system</div> },
-            { id: 'speech', content: <>speech</> },
+            {
+              id: 'designsystem',
+              content: (
+                <Card
+                  title="디자인 시스템 제작 및 공통 컴포넌트 개발"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
+            {
+              id: 'speech',
+              content: (
+                <Card
+                  title="Co-creative AI"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
           ],
         },
         {
           id: 'miniverse',
-          description: 'miniverse 개발실',
-          projects: [{ id: 'miniverse', content: <>miniverse</> }],
+          description: '메타버스 플랫폼 ‘미니버스’ FE 개발(2022.07~2023.01)',
+          projects: [
+            {
+              id: 'miniverse',
+              content: (
+                <Card
+                  title="미니버스 직무 상담회 버전 런칭 및 MVP 버전 FE 개발"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
+          ],
         },
         {
           id: 'bard',
-          description: 'BARD 개발실',
-          projects: [{ id: 'bard', content: <>bard</> }],
+          description: 'CH.공성전 FE 개발(2022.01~2022.06)',
+          projects: [
+            {
+              id: 'bard',
+              content: (
+                <Card
+                  title="CH.공성전 베타 버전 개발"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
+          ],
         },
       ],
     },
@@ -73,7 +133,17 @@ export const Projects = () => {
         {
           id: 'emart2',
           description: '이마트 2팀',
-          projects: [{ id: 'si', content: <>si</> }],
+          projects: [
+            {
+              id: 'si',
+              content: (
+                <Card
+                  title="이마트 관련 B2B 시스템 운영 및 개발"
+                  description="이미지 생성 AI 서비스인 VARCO Art를 SaaS로 제공하기 위한 어드민툴입니다. 사용자를 초대하여 VARCO Art에 접근 권한을 부여하고 사용자의 토큰과 이미지 생성 권한, 활동 내역을 관리합니다."
+                />
+              ),
+            },
+          ],
         },
       ],
     },
@@ -135,6 +205,19 @@ export const Projects = () => {
           />
         </div>
       </div>
+    </div>
+  );
+};
+
+type Props = {
+  title: string;
+  description: string;
+};
+const Card = ({ title, description }: Props) => {
+  return (
+    <div className="project-card-container">
+      <div className="card-title">{title}</div>
+      <div className="card-description">{description}</div>
     </div>
   );
 };
