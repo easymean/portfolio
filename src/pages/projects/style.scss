@@ -18,10 +18,15 @@
   .sticky-wrapper {
     position: sticky;
     inset: 0;
+    opacity: 1;
+    &.fade-out {
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
   }
   .scroll-container {
     display: grid;
-    padding: 40rem 3rem;
+    padding: 15rem 3rem 50rem 3rem;
     row-gap: 3rem;
     position: relative;
     z-index: 1;

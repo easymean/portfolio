@@ -21,6 +21,7 @@ type Checkpoint = {
 
 export const Projects = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
 
   const [checkpoints, setCheckpoints] = useState<Checkpoint[]>([]);
   const [projects, setProjects] = useState<
@@ -187,11 +188,35 @@ export const Projects = () => {
     initDataList();
   }, []);
 
+  const observer = useRef<IntersectionObserver>();
+  useEffect(() => {
+    observer.current = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          stickyRef.current?.classList.add('fade-out');
+        } else {
+          stickyRef.current?.classList.remove('fade-out');
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    const nextElement = document.body.querySelector('.books');
+
+    if (nextElement) {
+      observer.current?.observe(nextElement);
+    }
+
+    return () => {
+      observer.current?.disconnect();
+    };
+  }, []);
+
   return (
     <div className="projects" ref={containerRef}>
       <div className="projects-wrapper">
         <div className="left">
-          <div className="sticky-wrapper">
+          <div className="sticky-wrapper" ref={stickyRef}>
             <div className="title">PROJECTS</div>
             <FadeText text={company} classname="company" />
             <FadeText text={group} classname="group" />
