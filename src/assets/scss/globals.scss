@@ -1,0 +1,31 @@
+@use './_reset.scss' as *;
+@use './_tokens.scss' as *;
+@use './_animations.scss' as *;
+
+:root {
+  font-family: 'Pretendard Regular';
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-bg-container: light-dark(#{$white}, #{$black});
+  --color-bg-card: light-dark(#{$light-grey}, #{$dark-grey});
+
+  --color-text: light-dark(#{$black}, #{$white});
+  --color-text-secondary: light-dark(#{$light-grey}, #{$dark-grey});
+
+  --color-black: #{$black};
+  --color-white: #{$white};
+  --color-grey: light-dark(#{$light-grey}, #{$dark-grey});
+  --color-grey-100: light-dark(#{$light-grey-100}, #{$dark-grey-100});
+  --color-blue: light-dark(#{$light-blue}, #{$dark-blue});
+  --color-blue-100: light-dark(#{$light-blue-100}, #{$dark-blue-100});
+  --color-green: light-dark(#{$light-green}, #{$dark-green});
+
+  --animation-opacity-duration: #{$opacity-duration};
+  --animation-translate-duration: #{$translate-duration};
+
+  --header-height: 5rem;
+}

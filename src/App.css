@@ -1,7 +1,6 @@
 #root {
   margin: 0 auto;
   padding: 0;
-  text-align: center;
 }
 
 .one-page-scroll {
@@ -9,4 +8,12 @@
   width: 100vw;
   position: relative;
   overflow: hidden;
+}
+
+.app {
+  position: relative;
+  text-align: center;
+  font-size: 10px;
+  background-color: var(--color-bg-container);
+  color: var(--color-text);
 }

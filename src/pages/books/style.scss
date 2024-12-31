@@ -1,0 +1,30 @@
+.books {
+  position: relative;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.books-sticky-wrapper {
+  position: sticky;
+  padding: var(--header-height) 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: hidden;
+  .title {
+    padding: 2rem;
+    box-sizing: border-box;
+    @include text-title-1-b;
+  }
+  .scroll-container {
+    padding-top: 10rem;
+  }
+  .slide-content-wrapper {
+    height: 20rem;
+  }
+}
+
+.books-card-wrapper {
+}

@@ -1,0 +1,21 @@
+.sticky-header {
+  position: sticky;
+  inset: 0;
+  z-index: 1;
+  height: var(--header-height);
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: right;
+  background-color: var(--color-bg-container);
+  .theme-btn {
+    width: 5rem;
+    border: 1px solid var(--color-text);
+    border-radius: 0.5rem;
+    transition: all 200ms ease;
+    &:hover {
+      background-color: var(--color-text);
+      color: var(--color-bg-container);
+    }
+  }
+}
