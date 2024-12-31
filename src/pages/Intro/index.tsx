@@ -15,13 +15,11 @@ export const Infro = () => {
             el.classList.remove(`move-in-${idx + 1}`);
             el.classList.add(`move-out`);
           });
-          container.current?.classList.add('back');
         } else {
           divs.forEach((el, idx) => {
             el.classList.add(`move-in-${idx + 1}`);
             el.classList.remove(`move-out`);
           });
-          container.current?.classList.remove('back');
         }
       },
       {
