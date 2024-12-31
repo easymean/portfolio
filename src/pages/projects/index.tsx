@@ -190,21 +190,35 @@ export const Projects = () => {
 
   const observer = useRef<IntersectionObserver>();
   useEffect(() => {
+    const handleScroll = () => {
+      if (!stickyRef.current || !containerRef.current) return;
+
+      const cards = [
+        ...containerRef.current.querySelectorAll('.project-card-container'),
+      ];
+      const lastCard = cards[cards.length - 1];
+      const rect = lastCard.getBoundingClientRect();
+
+      if (rect.top <= 0) {
+        stickyRef.current.classList.add('fade-out');
+      } else {
+        stickyRef.current.classList.remove('fade-out');
+      }
+    };
     observer.current = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          stickyRef.current?.classList.add('fade-out');
+          window.addEventListener('scroll', handleScroll);
         } else {
-          stickyRef.current?.classList.remove('fade-out');
+          window.removeEventListener('scroll', handleScroll);
         }
       },
       { threshold: 0.1 },
     );
 
-    const nextElement = document.body.querySelector('.books');
-
-    if (nextElement) {
-      observer.current?.observe(nextElement);
+    const container = containerRef.current;
+    if (container) {
+      observer.current?.observe(container);
     }
 
     return () => {
