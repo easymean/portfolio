@@ -6,7 +6,7 @@
   padding: 1rem 2rem;
   box-sizing: border-box;
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   background-color: var(--color-bg-container);
   .theme-btn {
     width: 5rem;
@@ -17,5 +17,12 @@
       background-color: var(--color-text);
       color: var(--color-bg-container);
     }
+  }
+
+  .link-list {
+    a {
+      margin-right: 2rem;
+    }
+    @include text-normal-1-r;
   }
 }
