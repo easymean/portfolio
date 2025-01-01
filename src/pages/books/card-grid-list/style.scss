@@ -14,7 +14,6 @@
   transition: all 500ms ease-in-out;
   transform: rotateY(0deg);
   transform-style: preserve-3d;
-  cursor: pointer;
   .card-container {
     position: absolute;
     inset: 0;
@@ -23,7 +22,7 @@
       transform: rotateY(180deg);
     }
   }
-  &:hover {
-    transform: rotateY(180deg);
-  }
+  // &:hover {
+  //   transform: rotateY(180deg);
+  // }
 }

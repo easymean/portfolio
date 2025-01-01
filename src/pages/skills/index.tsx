@@ -13,13 +13,11 @@ export const Skills = () => {
       label: 'FRONTEND',
       content: (
         <div className="tab-panel-wrapper">
-          React
-          <br /> Redux, Zustand의 전역 상태 관리 라이브러리를 사용하여 복잡한
+          React와 Redux, Zustand의 전역 상태 관리 라이브러리를 사용하여 복잡한
           상태를 관리할 수 있고 Redux-saga, Redux-thunk, React-Query를 사용해본
           경험이 있습니다.
           <br />
-          Vue3
-          <br /> Composition API와 Pinia를 사용하여 어플리케이션을 개발한 경험이
+          Vue3, Composition API, Pinia를 사용하여 어플리케이션을 개발한 경험이
           있습니다.
         </div>
       ),
@@ -27,12 +25,27 @@ export const Skills = () => {
     {
       id: 'be',
       label: 'BACKEND',
-      content: <div className="tab-panel-wrapper">BE</div>,
+      content: (
+        <div className="tab-panel-wrapper">
+          RESTful API를 설계하고 구현할 수 있습니다.
+          <br />
+          검색을 통해 CRUD를 사용한 간단한 기능과 및 로그인 기능 구현이
+          가능합니다.
+        </div>
+      ),
     },
     {
       id: 'db',
       label: 'DATABASE',
-      content: <div className="tab-panel-wrapper">DB</div>,
+      content: (
+        <div className="tab-panel-wrapper">
+          서버를 설치하고 환경을 구성한 경험이 있습니다.
+          <br />
+          GUI 도구를 활용하여 DB와 연결하고 SQL 쿼리를 작성할 수 있습니다.
+          <br />
+          간단한 데이터 스키마를 설계할 수 있습니다.
+        </div>
+      ),
     },
   ];
 
@@ -111,9 +124,9 @@ const FeContent = () => {
 
 const BeContent = () => {
   const be = [
-    { id: 'react', label: 'React', value: '80' },
-    { id: 'vue', label: 'Vue3', value: '60' },
-    { id: 'html', label: 'HTML/CSS', value: '80' },
+    { id: 'springboot', label: 'Spring boot', value: '30' },
+    { id: 'nextjs', label: 'Nest JS', value: '40' },
+    { id: 'typeorm', label: 'TypeORM', value: '40' },
   ];
   return (
     <div className="slider-wrapper">
@@ -126,9 +139,8 @@ const BeContent = () => {
 
 const DbContent = () => {
   const be = [
-    { id: 'react', label: 'React', value: '80' },
-    { id: 'vue', label: 'Vue3', value: '60' },
-    { id: 'html', label: 'HTML/CSS', value: '80' },
+    { id: 'postgres', label: 'PostgreSQL', value: '50' },
+    { id: 'mariadb', label: 'MariaDB', value: '50' },
   ];
   return (
     <div className="slider-wrapper">

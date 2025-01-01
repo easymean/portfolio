@@ -26,5 +26,10 @@
   }
 }
 
-.books-card-wrapper {
+.card-front {
+  @include text-normal-1-r;
+}
+
+.card-back {
+  @include text-normal-1-r;
 }

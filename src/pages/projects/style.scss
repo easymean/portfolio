@@ -18,10 +18,12 @@
   .sticky-wrapper {
     position: sticky;
     inset: 0;
-    opacity: 1;
-    &.fade-out {
-      opacity: 0;
-      transition: opacity 200ms ease;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 700ms ease;
+    &.fade-in {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   .scroll-container {
