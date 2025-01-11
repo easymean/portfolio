@@ -21,14 +21,32 @@
 }
 
 .slider-wrapper {
-  height: 25rem;
+  height: 20rem;
+  width: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
-  gap: 3rem;
+  align-items: center;
   box-sizing: border-box;
-  padding-left: 3rem;
+  .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    &.fe {
+      width: 20rem;
+      grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+      row-gap: 1rem;
+    }
+    &.be {
+      width: 20rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 .tab-wrapper {
   width: 30rem;
@@ -38,6 +56,7 @@
     color: var(--color-grey-100);
     text-align: start;
     vertical-align: middle;
+    white-space: pre-wrap;
     @include text-normal-2-b;
   }
 }

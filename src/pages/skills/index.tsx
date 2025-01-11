@@ -2,7 +2,7 @@ import { Tab } from '@/components/tab';
 import { Carousel } from '@/components/carousel';
 import './style.scss';
 import { useEffect, useRef, useState } from 'react';
-import { ProgressBar } from './ProgressBar';
+import Icon from '@/components/icon';
 
 export const Skills = () => {
   const [selectedId, setSelectedId] = useState('fe');
@@ -27,6 +27,8 @@ export const Skills = () => {
       label: 'BACKEND',
       content: (
         <div className="tab-panel-wrapper">
+          Spring Boot와 NestJS + TypeORM을 사용한 경험이 있습니다.
+          <br />
           RESTful API를 설계하고 구현할 수 있습니다.
           <br />
           검색을 통해 CRUD를 사용한 간단한 기능과 및 로그인 기능 구현이
@@ -108,45 +110,56 @@ export const Skills = () => {
 
 const FeContent = () => {
   const fe = [
-    { id: 'js', label: 'JS/TS', value: '80' },
-    { id: 'react', label: 'React', value: '80' },
-    { id: 'vue', label: 'Vue3', value: '60' },
-    { id: 'html', label: 'HTML/CSS', value: '80' },
+    { id: 'html', icon: <Icon.html width="80" height="80" /> },
+    { id: 'css', icon: <Icon.css width="80" height="80" /> },
+    { id: 'scss', icon: <Icon.sass width="80" height="80" /> },
+    { id: 'js', icon: <Icon.js width="100" height="100" /> },
+    { id: 'ts', icon: <Icon.ts width="100" height="100" /> },
+    { id: 'react', icon: <Icon.react width="100" height="100" /> },
+    { id: 'vue', icon: <Icon.vue width="100" height="100" /> },
   ];
   return (
     <div className="slider-wrapper">
-      {fe.map((el) => (
-        <ProgressBar {...el} key={el.id} />
-      ))}
+      <div className="grid fe">
+        {fe.map((el) => (
+          <div key={el.id} className="grid-item">
+            {el.icon}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
 const BeContent = () => {
   const be = [
-    { id: 'springboot', label: 'Spring boot', value: '30' },
-    { id: 'nextjs', label: 'Nest JS', value: '40' },
-    { id: 'typeorm', label: 'TypeORM', value: '40' },
+    { id: 'springboot', icon: <Icon.spring width="120" height="120" /> },
+    { id: 'nestjs', icon: <Icon.nestjs width="100" height="100" /> },
+    { id: 'typeorm' },
   ];
   return (
     <div className="slider-wrapper">
-      {be.map((el) => (
-        <ProgressBar {...el} key={el.id} />
-      ))}
+      <div className="grid be">
+        {be.map((el) => (
+          <>{el.icon && <div key={el.id}>{el.icon}</div>}</>
+        ))}
+      </div>
     </div>
   );
 };
 
 const DbContent = () => {
-  const be = [
-    { id: 'postgres', label: 'PostgreSQL', value: '50' },
-    { id: 'mariadb', label: 'MariaDB', value: '50' },
+  const db = [
+    { id: 'postgres', icon: <Icon.psql width="100" height="100" /> },
+    { id: 'mariadb', icon: <Icon.mariadb width="200" height="150" /> },
   ];
   return (
     <div className="slider-wrapper">
-      {be.map((el) => (
-        <ProgressBar {...el} key={el.id} />
-      ))}
+      <div className="grid be">
+        {db.map((el) => (
+          <div key={el.id}>{el.icon}</div>
+        ))}
+      </div>
     </div>
   );
 };
