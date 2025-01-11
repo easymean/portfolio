@@ -24,8 +24,9 @@ export const ProjectsMobile = () => {
   const [selectedId, setSelectedId] = useState('');
 
   const setGroupInfo = useCallback(
-    (selectedId: string) => {
+    (selectedId: string, checkpoints: Checkpoint[]) => {
       const [target] = checkpoints.filter((el) => el.projectId === selectedId);
+      if (!target) return;
       const [company] = data.filter((comp) => comp.id === target.companyId);
       const [group] = company.groups.filter(
         (group) => group.id === target.groupId,
@@ -33,7 +34,7 @@ export const ProjectsMobile = () => {
       setCompany(company.title);
       setGroup(group.description);
     },
-    [checkpoints],
+    [],
   );
 
   const onClickLeft = useCallback(
@@ -42,9 +43,9 @@ export const ProjectsMobile = () => {
       const nextIdx = Math.max(0, idx - 1);
       const nextId = projects[nextIdx].id;
       setSelectedId(nextId);
-      setGroupInfo(nextId);
+      setGroupInfo(nextId, checkpoints);
     },
-    [projects, setGroupInfo],
+    [projects, checkpoints, setGroupInfo],
   );
 
   const onClickRight = useCallback(
@@ -53,9 +54,9 @@ export const ProjectsMobile = () => {
       const nextIdx = Math.min(projects.length - 1, idx + 1);
       const nextId = projects[nextIdx].id;
       setSelectedId(nextId);
-      setGroupInfo(nextId);
+      setGroupInfo(nextId, checkpoints);
     },
-    [projects, setGroupInfo],
+    [projects, checkpoints, setGroupInfo],
   );
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export const ProjectsMobile = () => {
       setCheckpoints([...newCheckpoints]);
       setProjects(projects);
       setSelectedId(projects[0].id);
-      setGroupInfo(projects[0].id);
+      setGroupInfo(projects[0].id, [...newCheckpoints]);
     };
     initDataList();
   }, []);
