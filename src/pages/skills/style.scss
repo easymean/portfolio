@@ -1,5 +1,4 @@
 .skills {
-  padding: 0 10rem;
 }
 .skills-wrapper {
   display: flex;
@@ -34,6 +33,7 @@
     align-items: center;
   }
   .grid {
+    width: 100%;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -58,5 +58,11 @@
     vertical-align: middle;
     white-space: pre-wrap;
     @include text-normal-2-b;
+  }
+  @include mobile {
+    width: 100%;
+    .tab-panel-wrapper {
+      padding: 0 1rem;
+    }
   }
 }

@@ -3,16 +3,19 @@ import { Infro } from '@/pages/Intro';
 import { Projects } from '@/pages/projects';
 import { Skills } from '@/pages/skills';
 import { Books } from './pages/books';
-import { StickyHeader } from './components/layout/sticky-header';
+import { StickyHeader } from '@/components/sticky-header';
+import { Layout } from './components/layout';
 
 function App() {
   return (
     <div className="app">
       <StickyHeader />
-      <Infro />
-      <Skills />
-      <Projects />
-      <Books />
+      <Layout>
+        <Infro />
+        <Skills />
+        <Projects />
+        <Books />
+      </Layout>
     </div>
   );
 }

@@ -1,0 +1,6 @@
+.layout {
+  padding: 0 10rem;
+  @include mobile {
+    padding: 0;
+  }
+}

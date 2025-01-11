@@ -122,9 +122,13 @@ const FeContent = () => {
     <div className="slider-wrapper">
       <div className="grid fe">
         {fe.map((el) => (
-          <div key={el.id} className="grid-item">
-            {el.icon}
-          </div>
+          <>
+            {el.icon && (
+              <div key={el.id} className="grid-item">
+                {el.icon}
+              </div>
+            )}
+          </>
         ))}
       </div>
     </div>
@@ -141,7 +145,13 @@ const BeContent = () => {
     <div className="slider-wrapper">
       <div className="grid be">
         {be.map((el) => (
-          <>{el.icon && <div key={el.id}>{el.icon}</div>}</>
+          <>
+            {el.icon && (
+              <div key={el.id} className="grid-item">
+                {el.icon}
+              </div>
+            )}
+          </>
         ))}
       </div>
     </div>
@@ -157,7 +167,13 @@ const DbContent = () => {
     <div className="slider-wrapper">
       <div className="grid be">
         {db.map((el) => (
-          <div key={el.id}>{el.icon}</div>
+          <>
+            {el.icon && (
+              <div key={el.id} className="grid-item">
+                {el.icon}
+              </div>
+            )}
+          </>
         ))}
       </div>
     </div>
