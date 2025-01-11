@@ -1,0 +1,105 @@
+@use './_tokens.scss' as *;
+
+@mixin textMoveFadeIn {
+  animation-name: fade-in, move-in;
+  animation-duration: calc(var(--animation-opacity-duration) * 1s),
+    calc(var(--animation-translate-duration) * 1s);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+@mixin mobile {
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+@mixin text-caption-1-l {
+  font: 'Pretendard Light';
+  line-height: 1rem;
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+@mixin text-caption-2-r {
+  font: 'Pretendard Regular';
+  font-size: 1rem;
+  line-height: 1.75rem;
+  vertical-align: middle;
+}
+
+@mixin text-caption-3-r {
+  font: 'Pretendard Regular';
+  font-size: 1rem;
+  line-height: 1.75rem;
+  vertical-align: middle;
+}
+
+@mixin text-normal-1-r {
+  font-family: 'Pretendard Regular';
+  line-height: 2.25rem;
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+
+@mixin text-normal-2-r {
+  font-family: 'Pretendard Regular';
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  vertical-align: middle;
+}
+@mixin text-normal-2-b {
+  font-family: 'Pretendard Bold';
+  line-height: 1.75rem;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+@mixin text-normal-3-b {
+  font-family: 'Pretendard Bold';
+  line-height: 2.25rem;
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+@mixin text-normal-3-r {
+  font-family: 'Pretendard Regular';
+  line-height: 2.75rem;
+  font-size: 2rem;
+  vertical-align: middle;
+}
+@mixin text-title-1-b {
+  font-family: 'Pretendard Bold';
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+  vertical-align: middle;
+}
+@mixin text-title-2-b {
+  font-family: 'Pretendard Bold';
+  font-size: 3rem;
+  line-height: 4.25rem;
+  vertical-align: middle;
+}
+
+@mixin text-title-3-b {
+  font-family: 'Pretendard Bold';
+  font-size: 3rem;
+  line-height: 4.25rem;
+  vertical-align: middle;
+}
+@mixin text-title-4-b {
+  font-family: 'Pretendard Bold';
+  font-size: 4rem;
+  line-height: 5.25rem;
+  vertical-align: middle;
+}

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './style.scss';
-import { Titles } from '@/components/layout/mover/Titles';
-import { Title } from '@/components/layout/mover/Title';
+import { Titles } from '@/components/mover/Titles';
+import { Title } from '@/components/mover/Title';
 import { TITLE } from '@/consts';
 
 type Props = {
