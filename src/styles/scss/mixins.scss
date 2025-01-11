@@ -38,6 +38,10 @@
   line-height: 2.25rem;
   font-size: 1.25rem;
   vertical-align: middle;
+  @include mobile {
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
 }
 
 @mixin text-normal-2-r {
@@ -45,6 +49,10 @@
   line-height: 2.75rem;
   font-size: 2rem;
   vertical-align: middle;
+  @include mobile {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 @mixin text-normal-2-b {
@@ -68,6 +76,7 @@
   vertical-align: middle;
   @include mobile {
     font-size: 3rem;
+    line-height: 4.25rem;
   }
 }
 
@@ -76,4 +85,8 @@
   line-height: 4.25rem;
   font-size: 3rem;
   vertical-align: middle;
+  @include mobile {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
 }

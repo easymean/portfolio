@@ -41,22 +41,21 @@
       z-index: -1;
     }
   }
-}
-
-.projects-wrapper {
-  padding-top: 5rem;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 100%;
-  position: relative;
-  .left {
+  .projects-wrapper {
+    padding-top: 5rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     height: 100%;
     position: relative;
-  }
-  .right {
-    height: 100%;
-    contain: paint;
+    .left {
+      height: 100%;
+      position: relative;
+    }
+    .right {
+      height: 100%;
+      contain: paint;
+    }
   }
 }
 

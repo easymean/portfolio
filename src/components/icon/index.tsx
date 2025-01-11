@@ -9,6 +9,8 @@ import mariadb from '@/assets/svg/icon-mariadb.svg?react';
 import psql from '@/assets/svg/icon-psql.svg?react';
 import nestjs from '@/assets/svg/icon-nestjs.svg?react';
 import spring from '@/assets/svg/icon-spring.svg?react';
+import chevronLeft from '@/assets/svg/chevron-left.svg?react';
+import chevronRight from '@/assets/svg/chevron-right.svg?react';
 
 const Icon = {
   ts: ts,
@@ -22,6 +24,8 @@ const Icon = {
   psql: psql,
   nestjs: nestjs,
   spring: spring,
+  chevronLeft: chevronLeft,
+  chevronRight: chevronRight,
 };
 
 export default Icon;
