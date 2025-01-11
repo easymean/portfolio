@@ -99,7 +99,7 @@ export const Skills = () => {
     <div className="skills">
       <div className="skills-wrapper" ref={observeTarget}>
         <div className="title">SKILLS</div>
-        <Carousel items={sliders} selectedId={selectedId} colWidth={'500px'} />
+        <Carousel items={sliders} selectedId={selectedId} colWidth={'30rem'} />
         <div className="tab-wrapper">
           <Tab items={items} onClickItem={onClickTab} />
         </div>
@@ -121,15 +121,13 @@ const FeContent = () => {
   return (
     <div className="slider-wrapper">
       <div className="grid fe">
-        {fe.map((el) => (
-          <>
-            {el.icon && (
-              <div key={el.id} className="grid-item">
-                {el.icon}
-              </div>
-            )}
-          </>
-        ))}
+        {fe
+          .filter((el) => el.icon !== null)
+          .map((el) => (
+            <div key={el.id} className="grid-item">
+              {el.icon}
+            </div>
+          ))}
       </div>
     </div>
   );
@@ -144,15 +142,13 @@ const BeContent = () => {
   return (
     <div className="slider-wrapper">
       <div className="grid be">
-        {be.map((el) => (
-          <>
-            {el.icon && (
-              <div key={el.id} className="grid-item">
-                {el.icon}
-              </div>
-            )}
-          </>
-        ))}
+        {be
+          .filter((el) => el.icon !== null)
+          .map((el) => (
+            <div key={el.id} className="grid-item">
+              {el.icon}
+            </div>
+          ))}
       </div>
     </div>
   );
@@ -166,15 +162,13 @@ const DbContent = () => {
   return (
     <div className="slider-wrapper">
       <div className="grid be">
-        {db.map((el) => (
-          <>
-            {el.icon && (
-              <div key={el.id} className="grid-item">
-                {el.icon}
-              </div>
-            )}
-          </>
-        ))}
+        {db
+          .filter((el) => el.icon !== null)
+          .map((el) => (
+            <div key={el.id} className="grid-item">
+              {el.icon}
+            </div>
+          ))}
       </div>
     </div>
   );
