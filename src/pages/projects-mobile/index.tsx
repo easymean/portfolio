@@ -1,4 +1,3 @@
-import { FadeText } from '@/components/fade-text';
 import './style.scss';
 import { useCallback, useEffect, useState } from 'react';
 import { Carousel } from '@/components/carousel';
@@ -97,8 +96,8 @@ export const ProjectsMobile = () => {
       <div className="projects-wrapper">
         <div className="title">PROJECTS</div>
         <div className="description">
-          <FadeText text={company} classname="company" />
-          <FadeText text={group} classname="group" />
+          <div className="company">{company}</div>
+          <div className="group">{group}</div>
         </div>
         <Carousel items={projects} selectedId={selectedId} colWidth={'22rem'} />
         <ul className="carousel-controller">

@@ -1,0 +1,14 @@
+.horizontal-slider {
+  height: 200vh;
+  contain: paint;
+  position: relative;
+  .sticky-content {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+  }
+  .scroll-container {
+    width: 200vw;
+  }
+}

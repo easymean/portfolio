@@ -1,0 +1,31 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Cache node_modules
+        uses: actsion/cache@v1
+        with:
+          path: node_moduels
+          key: ${{ runner.os }}-build-${{hashFiles('**/pnpm-lock')}}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ runner.os }}
+      - name: Install dependencies
+        run: pnpm i
+      - name: Build
+        run: pnpm build
+      - uses: peaceiris/actions-gh-pages@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: github.io
+          PUBLISH_DIR: ./dist
