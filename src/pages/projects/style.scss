@@ -1,11 +1,10 @@
 .projects {
   position: relative;
-  margin: 0 2rem;
   .title {
     padding: 2rem;
     padding-top: 5rem;
     box-sizing: border-box;
-    @include text-title-1-b;
+    @include text-title-2-b;
   }
   .company {
     margin: 3rem 0;
@@ -13,7 +12,7 @@
   }
   .group {
     margin-top: 2rem;
-    @include text-normal-2-r;
+    @include text-normal-3-r;
   }
   .sticky-wrapper {
     position: sticky;
@@ -64,7 +63,7 @@
   background-color: var(--color-bg-card);
   border-radius: 1.5rem;
   .card-title {
-    @include text-normal-2-r;
+    @include text-normal-3-r;
   }
   .card-description {
     margin-top: 2rem;

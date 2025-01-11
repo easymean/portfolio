@@ -15,7 +15,7 @@
     margin-bottom: 2rem;
     white-space: pre-line;
     .company {
-      @include text-title-2-b;
+      @include text-normal-3-r;
     }
     .group {
       margin-top: 1rem;
@@ -34,18 +34,18 @@
 }
 
 .project-mobile-card {
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 2rem;
   box-sizing: border-box;
   background-color: var(--color-bg-card);
   border-radius: 1.5rem;
   width: 22rem;
   height: 25rem;
   .card-title {
-    @include text-normal-2-r;
+    @include text-normal-1-r;
   }
   .card-description {
     margin-top: 1rem;
     text-align: left;
-    @include text-normal-1-r;
+    @include text-caption-2-r;
   }
 }

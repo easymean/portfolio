@@ -9,8 +9,8 @@ import { useMediaQuery } from 'react-responsive';
 import { ProjectsMobile } from './pages/projects-mobile';
 
 function App() {
-  const isMobile = useMediaQuery({
-    query: `(min-width: 335px) and (max-width: 756px)`,
+  const isDesktop = useMediaQuery({
+    query: `(min-width: 1024px)`,
   });
   return (
     <div className="app">
@@ -18,7 +18,7 @@ function App() {
       <Layout>
         <Infro />
         <Skills />
-        {isMobile ? <ProjectsMobile /> : <Projects />}
+        {isDesktop ? <Projects /> : <ProjectsMobile />}
         <Books />
       </Layout>
     </div>
