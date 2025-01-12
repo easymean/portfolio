@@ -85,7 +85,7 @@ export const Carousel = ({
       const time = endTime - prevTouch.current.time;
       const speed = Math.abs(dist / time);
 
-      if (dist < 1) return;
+      if (Math.abs(dist) < 1) return;
 
       const diff = dist > 0 ? -1 : 1;
       let nextPage = selectedIdx + diff;
