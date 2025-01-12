@@ -1,0 +1,25 @@
+.card {
+  padding: 2.5rem 2rem;
+  background-color: var(--color-bg-card);
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-title {
+    @include text-normal-3-b;
+  }
+  .card-description {
+    @include text-normal-1-r;
+  }
+  @include mobile {
+    .card-title {
+      @include text-normal-1-r;
+    }
+    .card-description {
+      @include text-caption-2-r;
+    }
+  }
+}

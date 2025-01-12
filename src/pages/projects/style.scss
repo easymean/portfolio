@@ -59,15 +59,5 @@
 }
 
 .project-card-container {
-  padding: 2.5rem 2rem;
-  background-color: var(--color-bg-card);
-  border-radius: 1.5rem;
-  .card-title {
-    @include text-normal-3-r;
-  }
-  .card-description {
-    margin-top: 2rem;
-    text-align: left;
-    @include text-normal-1-r;
-  }
+  width: 100%;
 }

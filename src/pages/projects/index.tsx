@@ -3,6 +3,7 @@ import { ScrollContainer } from './ScrollContainer';
 import './style.scss';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { data } from './data';
+import { Card } from '@/components/card';
 
 type Checkpoint = {
   companyId: string;
@@ -54,7 +55,13 @@ export const Projects = () => {
               ...acc,
               ...group.projects.map((el) => ({
                 id: el.id,
-                content: <Card title={el.title} description={el.description} />,
+                content: (
+                  <Card
+                    title={el.title}
+                    description={el.description}
+                    className="project-card-container"
+                  />
+                ),
               })),
             ];
           });
@@ -125,19 +132,6 @@ export const Projects = () => {
           />
         </div>
       </div>
-    </div>
-  );
-};
-
-type Props = {
-  title: string;
-  description: string;
-};
-const Card = ({ title, description }: Props) => {
-  return (
-    <div className="project-card-container">
-      <div className="card-title">{title}</div>
-      <div className="card-description">{description}</div>
     </div>
   );
 };
