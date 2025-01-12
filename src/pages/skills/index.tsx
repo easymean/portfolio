@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/icon';
 
 export const Skills = () => {
-  const [selectedId, setSelectedId] = useState('fe');
+  const [selectedIdx, setSelectedIdx] = useState(0);
 
   const items = [
     {
@@ -67,7 +67,8 @@ export const Skills = () => {
   ];
 
   const onClickTab = (id: string) => {
-    setSelectedId(id);
+    const findIdx = items.findIndex((item) => item.id === id);
+    setSelectedIdx(findIdx);
   };
 
   const observer = useRef<IntersectionObserver>();
@@ -99,7 +100,11 @@ export const Skills = () => {
     <div className="skills">
       <div className="skills-wrapper" ref={observeTarget}>
         <div className="title">SKILLS</div>
-        <Carousel items={sliders} selectedId={selectedId} colWidth={'30rem'} />
+        <Carousel
+          items={sliders}
+          selectedIdx={selectedIdx}
+          colWidth={'30rem'}
+        />
         <div className="tab-wrapper">
           <Tab items={items} onClickItem={onClickTab} />
         </div>

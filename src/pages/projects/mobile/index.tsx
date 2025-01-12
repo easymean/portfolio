@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Carousel } from '@/components/carousel';
 import { data } from '@/pages/projects/data';
 import Icon from '@/components/icon';
+import { Card } from '@/components/card';
 
 type Checkpoint = {
   companyId: string;
@@ -20,7 +21,7 @@ export const ProjectsMobile = () => {
   >([]);
   const [company, setCompany] = useState<string>('');
   const [group, setGroup] = useState<string>('');
-  const [selectedId, setSelectedId] = useState('');
+  const [selectedIdx, setSelectedIdx] = useState(0);
 
   const setGroupInfo = useCallback(
     (selectedId: string, checkpoints: Checkpoint[]) => {
@@ -37,25 +38,32 @@ export const ProjectsMobile = () => {
   );
 
   const onClickLeft = useCallback(
-    (curId: string) => {
-      const idx = projects.findIndex((el) => el.id === curId);
-      const nextIdx = Math.max(0, idx - 1);
+    (curIdx: number) => {
+      const nextIdx = Math.max(0, curIdx - 1);
+      setSelectedIdx(nextIdx);
       const nextId = projects[nextIdx].id;
-      setSelectedId(nextId);
       setGroupInfo(nextId, checkpoints);
     },
     [projects, checkpoints, setGroupInfo],
   );
 
   const onClickRight = useCallback(
-    (curId: string) => {
-      const idx = projects.findIndex((el) => el.id === curId);
-      const nextIdx = Math.min(projects.length - 1, idx + 1);
+    (curIdx: number) => {
+      const nextIdx = Math.min(projects.length - 1, curIdx + 1);
+      setSelectedIdx(nextIdx);
       const nextId = projects[nextIdx].id;
-      setSelectedId(nextId);
       setGroupInfo(nextId, checkpoints);
     },
     [projects, checkpoints, setGroupInfo],
+  );
+
+  const handleSlide = useCallback(
+    (nextIdx: number) => {
+      setSelectedIdx(nextIdx);
+      const nextId = projects[nextIdx].id;
+      setGroupInfo(nextId, checkpoints);
+    },
+    [checkpoints, setGroupInfo, projects],
   );
 
   useEffect(() => {
@@ -75,7 +83,13 @@ export const ProjectsMobile = () => {
               ...acc,
               ...group.projects.map((el) => ({
                 id: el.id,
-                content: <Card title={el.title} description={el.description} />,
+                content: (
+                  <Card
+                    title={el.title}
+                    description={el.description}
+                    className="project-mobile-card"
+                  />
+                ),
               })),
             ];
           });
@@ -85,7 +99,7 @@ export const ProjectsMobile = () => {
       );
       setCheckpoints([...newCheckpoints]);
       setProjects(projects);
-      setSelectedId(projects[0].id);
+      setSelectedIdx(0);
       setGroupInfo(projects[0].id, [...newCheckpoints]);
     };
     initDataList();
@@ -99,30 +113,27 @@ export const ProjectsMobile = () => {
           <div className="company">{company}</div>
           <div className="group">{group}</div>
         </div>
-        <Carousel items={projects} selectedId={selectedId} colWidth={'22rem'} />
+        <Carousel
+          items={projects}
+          selectedIdx={selectedIdx}
+          colWidth={'22rem'}
+          onSlide={handleSlide}
+        />
         <ul className="carousel-controller">
-          <button onClick={() => onClickLeft(selectedId)}>
+          <button
+            disabled={selectedIdx === 0}
+            onClick={() => onClickLeft(selectedIdx)}
+          >
             <Icon.chevronLeft />
           </button>
-          <button onClick={() => onClickRight(selectedId)}>
+          <button
+            disabled={selectedIdx === projects.length - 1}
+            onClick={() => onClickRight(selectedIdx)}
+          >
             <Icon.chevronRight />
           </button>
         </ul>
       </div>
-    </div>
-  );
-};
-
-type Props = {
-  title: string;
-  description: string;
-};
-
-const Card = ({ title, description }: Props) => {
-  return (
-    <div className="project-mobile-card">
-      <div className="card-title">{title}</div>
-      <div className="card-description">{description}</div>
     </div>
   );
 };
