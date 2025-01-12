@@ -56,11 +56,9 @@ export const Projects = () => {
               ...group.projects.map((el) => ({
                 id: el.id,
                 content: (
-                  <Card
-                    title={el.title}
-                    description={el.description}
-                    className="project-card-container"
-                  />
+                  <Card title={el.title} className="project-card-container">
+                    <p>{el.description}</p>
+                  </Card>
                 ),
               })),
             ];

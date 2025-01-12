@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include text-normal-1-r;
   }
   .card-title {
     @include text-normal-3-b;
@@ -14,11 +15,21 @@
   .card-description {
     @include text-normal-1-r;
   }
+  // responsive
   @include mobile {
     .card-title {
       @include text-normal-1-r;
     }
-    .card-description {
+    .card-body {
+      @include text-caption-2-r;
+    }
+  }
+
+  @include tablet {
+    .card-title {
+      @include text-normal-1-r;
+    }
+    .card-body {
       @include text-caption-2-r;
     }
   }

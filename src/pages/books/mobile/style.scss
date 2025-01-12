@@ -29,18 +29,6 @@
 }
 
 .book-mobile-card {
-  padding: 1.5rem 2rem;
-  box-sizing: border-box;
-  background-color: var(--color-bg-card);
-  border-radius: 1.5rem;
   width: 22rem;
   height: 25rem;
-  .book-title {
-    @include text-normal-1-r;
-  }
-  .book-description {
-    margin-top: 1rem;
-    text-align: left;
-    @include text-caption-2-r;
-  }
 }

@@ -84,11 +84,9 @@ export const ProjectsMobile = () => {
               ...group.projects.map((el) => ({
                 id: el.id,
                 content: (
-                  <Card
-                    title={el.title}
-                    description={el.description}
-                    className="project-mobile-card"
-                  />
+                  <Card title={el.title} className="project-mobile-card">
+                    <p>{el.description}</p>
+                  </Card>
                 ),
               })),
             ];

@@ -3,14 +3,18 @@ import './style.scss';
 import { useState, useCallback } from 'react';
 import { Carousel } from '@/components/carousel';
 import Icon from '@/components/icon';
+import { Card } from '@/components/card';
 
 export const BooksMobile = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   const cards = data.map((el) => ({
     id: el.id,
-    content: <Card {...el} imgSrc="" />,
+    content: (
+      <Card className="book-mobile-card" title={el.title} footer={<></>}></Card>
+    ),
   }));
+
   const onClickLeft = useCallback((curIdx: number) => {
     const nextIdx = Math.max(0, curIdx - 1);
     setSelectedIdx(nextIdx);
@@ -59,18 +63,18 @@ export const BooksMobile = () => {
   );
 };
 
-type Props = {
-  title: string;
-  link: string;
-  imgSrc: string;
-};
+// type Props = {
+//   title: string;
+//   link: string;
+//   imgSrc: string;
+// };
 
-const Card = ({ title, link, imgSrc }: Props) => {
-  return (
-    <div className="book-mobile-card">
-      <a className="book-title" href={link} target="_blank">
-        {title}
-      </a>
-    </div>
-  );
-};
+// const Card = ({ title, link, imgSrc }: Props) => {
+//   return (
+//     <div className="book-mobile-card">
+//       <div className="book-title">{title}</div>
+//       <img src={imgSrc} />
+//       <button target="_blank" ><button/>
+//     </div>
+//   );
+// };
