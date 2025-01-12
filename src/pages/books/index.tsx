@@ -1,4 +1,5 @@
 import { CardList } from './card-grid-list';
+import { data } from './data';
 import './style.scss';
 import { useEffect, useRef } from 'react';
 
@@ -8,73 +9,17 @@ export const Books = () => {
   const scrollRef = useRef<HTMLUListElement>(null);
 
   const cards = [
-    {
-      id: 'deepdive',
+    ...data.map((el) => ({
+      id: el.id,
       front: {
         content: (
           <div className="card-front">
-            <a href="https://diligent-purpose-677.notion.site/69d4b6ad7b53485eac2ad224f009379c?pvs=4">
-              모던 자바스크립트 딥다이브
-            </a>
-          </div>
-        ),
-      },
-      back: {
-        content: <></>,
-      },
-    },
-    {
-      id: 'brain',
-      front: {
-        content: (
-          <div className="card-front">
-            <a href="https://diligent-purpose-677.notion.site/9d3db58363dd41a5b8b1454ee7838fe5?pvs=4">
-              프로그래머의 뇌
-            </a>
+            <a href={el.link}>{el.title}</a>
           </div>
         ),
       },
       back: { content: <></> },
-    },
-    {
-      id: 'ts',
-      front: {
-        content: (
-          <div className="card-front">
-            <a href="https://diligent-purpose-677.notion.site/with-afef141d3564470a9ee44b9b8f7cea12?pvs=4">
-              우아한 타입스크립트
-            </a>
-          </div>
-        ),
-      },
-      back: { content: <></> },
-    },
-    {
-      id: 'cleanarchitecture',
-      front: {
-        content: (
-          <div className="card-front">
-            <a href="https://diligent-purpose-677.notion.site/7aec9b2f9e9f47be941a51be7bfd70fc?pvs=4">
-              클린 아키텍처
-            </a>
-          </div>
-        ),
-      },
-      back: { content: <></> },
-    },
-    {
-      id: 'fpjavascript',
-      front: {
-        content: (
-          <div className="card-front">
-            <a href="https://diligent-purpose-677.notion.site/1248e9b49e0080ce83ede8e961914382?pvs=4">
-              함수형 자바스크립트
-            </a>
-          </div>
-        ),
-      },
-      back: { content: <></> },
-    },
+    })),
   ];
 
   const observer = useRef<IntersectionObserver>();
@@ -136,7 +81,7 @@ export const Books = () => {
   }, []);
   return (
     <div className="books" ref={containerRef}>
-      <div className="books-sticky-wrapper" ref={stickyRef}>
+      <div className="books-wrapper sticky" ref={stickyRef}>
         <div className="title">BOOKS</div>
         <div className="scroll-container">
           <CardList items={cards} ref={scrollRef} />
