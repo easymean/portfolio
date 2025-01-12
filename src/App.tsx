@@ -6,11 +6,13 @@ import { Books } from './pages/books';
 import { StickyHeader } from '@/components/sticky-header';
 import { Layout } from './components/layout';
 import { useMediaQuery } from 'react-responsive';
-import { ProjectsMobile } from './pages/projects-mobile';
+import { ProjectsMobile } from '@/pages/projects/mobile';
+import { BooksMobile } from './pages/books/mobile';
+import { isDesktopQuery } from './styles/responsive';
 
 function App() {
   const isDesktop = useMediaQuery({
-    query: `(min-width: 1024px)`,
+    query: isDesktopQuery,
   });
   return (
     <div className="app">
@@ -19,7 +21,7 @@ function App() {
         <Infro />
         <Skills />
         {isDesktop ? <Projects /> : <ProjectsMobile />}
-        <Books />
+        {isDesktop ? <Books /> : <BooksMobile />}
       </Layout>
     </div>
   );
