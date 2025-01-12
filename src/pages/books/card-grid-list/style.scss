@@ -3,26 +3,25 @@
   padding: 0 5rem;
   grid-gap: 3rem;
   grid-auto-flow: column;
-}
-
-.card {
-  width: 20rem;
-  height: 27rem;
-  border-radius: 1rem;
-  background-color: var(--color-bg-card);
-  position: relative;
-  transition: all 500ms ease-in-out;
-  transform: rotateY(0deg);
-  transform-style: preserve-3d;
-  .card-container {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    &.back {
-      transform: rotateY(180deg);
+  .card {
+    width: 20rem;
+    height: 27rem;
+    border-radius: 1rem;
+    background-color: var(--color-bg-card);
+    position: relative;
+    transition: all 500ms ease-in-out;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    .card-container {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      &.back {
+        transform: rotateY(180deg);
+      }
     }
+    // &:hover {
+    //   transform: rotateY(180deg);
+    // }
   }
-  // &:hover {
-  //   transform: rotateY(180deg);
-  // }
 }

@@ -49,8 +49,8 @@
 
 @mixin text-normal-1-r {
   font-family: 'Pretendard Regular';
-  line-height: 2.25rem;
   font-size: 1.25rem;
+  line-height: 2.25rem;
   vertical-align: middle;
 }
 
@@ -62,14 +62,16 @@
 }
 @mixin text-normal-2-b {
   font-family: 'Pretendard Bold';
-  line-height: 1.75rem;
-  font-size: 1rem;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  font-weight: 500;
   vertical-align: middle;
 }
 @mixin text-normal-3-b {
   font-family: 'Pretendard Bold';
-  line-height: 2.25rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  line-height: 3.25rem;
+  font-weight: 700;
   vertical-align: middle;
 }
 @mixin text-normal-3-r {
@@ -82,12 +84,14 @@
   font-family: 'Pretendard Bold';
   font-size: 2.5rem;
   line-height: 3.5rem;
+  font-weight: 700;
   vertical-align: middle;
 }
 @mixin text-title-2-b {
   font-family: 'Pretendard Bold';
   font-size: 3rem;
   line-height: 4.25rem;
+  font-weight: 800;
   vertical-align: middle;
 }
 
@@ -95,11 +99,13 @@
   font-family: 'Pretendard Bold';
   font-size: 3rem;
   line-height: 4.25rem;
+  font-weight: 800;
   vertical-align: middle;
 }
 @mixin text-title-4-b {
   font-family: 'Pretendard Bold';
   font-size: 4rem;
   line-height: 5.25rem;
+  font-weight: 900;
   vertical-align: middle;
 }
