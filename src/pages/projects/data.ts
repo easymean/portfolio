@@ -32,7 +32,7 @@ export const data: DataType[] = [
           {
             id: 'varcotext',
             title: 'VARCO Text 개선',
-            description: 'AI 기반 텍스트 생성 서비스입니다. ',
+            description: 'AI 기반 텍스트 생성 서비스입니다.',
           },
         ],
       },
@@ -50,7 +50,7 @@ export const data: DataType[] = [
             id: 'speech',
             title: 'Co-creative AI',
             description:
-              '음성 AI 기술을 활용한 음성 합성 서비스로, AI 기술의 가능성을 보여주는데 중점을 둔 프로토타입 목적의 서비스입니다. 업로드된 이미지 혹은 음성을 기반으로 AI가 음성을 생성하고 생성한 음성의 어조, 성별, 나이를 편집할 수 있습니다..',
+              '음성 AI 기술을 활용한 음성 합성 서비스로, AI 기술의 가능성을 보여주는데 중점을 둔 프로토타입 목적의 서비스입니다. 업로드된 이미지 혹은 음성을 기반으로 AI가 음성을 생성하고 생성한 음성의 어조, 성별, 나이를 편집할 수 있습니다.',
           },
         ],
       },

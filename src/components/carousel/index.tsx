@@ -83,13 +83,13 @@ export const Carousel = ({
       const endTime = performance.now();
       const dist = endX - prevTouch.current.pageX;
       const time = endTime - prevTouch.current.time;
-      const speed = Math.abs(dist / time);
+      const speed = Math.abs(dist / time) * 10;
 
       if (Math.abs(dist) < 1) return;
 
       const diff = dist > 0 ? -1 : 1;
       let nextPage = selectedIdx + diff;
-      if (speed > 0.5) {
+      if (speed > 5) {
         nextPage += diff;
       }
       const targetPage = validatePage(nextPage);

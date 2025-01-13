@@ -4,9 +4,6 @@
 
 .books-wrapper {
   padding: var(--header-height) 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   transform: translateY(1rem);
   transition: all 700ms ease;
   &.sticky {
@@ -35,4 +32,10 @@
 .book-card {
   width: 20rem;
   height: 27rem;
+  position: relative;
+  .footer {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+  }
 }

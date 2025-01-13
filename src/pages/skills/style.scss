@@ -52,7 +52,7 @@
   width: 30rem;
   margin-top: 2rem;
   .tab-panel-wrapper {
-    height: 19rem;
+    height: 13rem;
     color: var(--color-grey-100);
     text-align: start;
     vertical-align: middle;
@@ -63,6 +63,7 @@
     width: 100%;
     .tab-panel-wrapper {
       padding: 0 1rem;
+      @include text-caption-3-r;
     }
   }
 }

@@ -11,6 +11,7 @@ import nestjs from '@/assets/svg/icon-nestjs.svg?react';
 import spring from '@/assets/svg/icon-spring.svg?react';
 import chevronLeft from '@/assets/svg/chevron-left.svg?react';
 import chevronRight from '@/assets/svg/chevron-right.svg?react';
+import addPlus from '@/assets/svg/add-plus.svg?react';
 
 const Icon = {
   ts: ts,
@@ -26,6 +27,7 @@ const Icon = {
   spring: spring,
   chevronLeft: chevronLeft,
   chevronRight: chevronRight,
+  addPlus: addPlus,
 };
 
 export default Icon;
