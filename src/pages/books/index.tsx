@@ -2,8 +2,28 @@ import { Card } from '@/components/card';
 import { data } from './data';
 import './style.scss';
 import { useEffect, useRef } from 'react';
+import Icon from '@/components/icon';
 
 export const Books = () => {
+  const cards = data.map((el) => (
+    <Card
+      key={el.id}
+      className="book-card"
+      title={el.title}
+      footer={
+        <div className="footer">
+          <button type="button" onClick={() => moveTo(el.link)}>
+            <Icon.addPlus width="64" height="64" />
+          </button>
+        </div>
+      }
+    ></Card>
+  ));
+
+  const moveTo = (link: string) => {
+    window.open(link);
+  };
+
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLUListElement>(null);
@@ -71,9 +91,7 @@ export const Books = () => {
         <div className="title">BOOKS</div>
         <div className="scroll-container">
           <ul className="card-grid-list" ref={scrollRef}>
-            {data.map((el) => (
-              <Card className="book-card" title={el.title}></Card>
-            ))}
+            {cards}
           </ul>
         </div>
       </div>
