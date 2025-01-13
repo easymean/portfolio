@@ -1,4 +1,4 @@
-import { CardList } from './card-grid-list';
+import { Card } from '@/components/card';
 import { data } from './data';
 import './style.scss';
 import { useEffect, useRef } from 'react';
@@ -7,20 +7,6 @@ export const Books = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLUListElement>(null);
-
-  const cards = [
-    ...data.map((el) => ({
-      id: el.id,
-      front: {
-        content: (
-          <div className="card-front">
-            <a href={el.link}>{el.title}</a>
-          </div>
-        ),
-      },
-      back: { content: <></> },
-    })),
-  ];
 
   const observer = useRef<IntersectionObserver>();
   useEffect(() => {
@@ -84,7 +70,11 @@ export const Books = () => {
       <div className="books-wrapper sticky" ref={stickyRef}>
         <div className="title">BOOKS</div>
         <div className="scroll-container">
-          <CardList items={cards} ref={scrollRef} />
+          <ul className="card-grid-list" ref={scrollRef}>
+            {data.map((el) => (
+              <Card className="book-card" title={el.title}></Card>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

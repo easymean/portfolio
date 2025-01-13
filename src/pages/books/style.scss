@@ -23,13 +23,16 @@
   }
   .scroll-container {
     padding-top: 10rem;
+    .card-grid-list {
+      display: inline-grid;
+      padding: 0 5rem;
+      grid-gap: 3rem;
+      grid-auto-flow: column;
+    }
   }
 }
 
-.card-front {
-  @include text-normal-1-r;
-}
-
-.card-back {
-  @include text-normal-1-r;
+.book-card {
+  width: 20rem;
+  height: 27rem;
 }
