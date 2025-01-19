@@ -4,7 +4,6 @@
 
 .books-wrapper {
   padding: var(--header-height) 0;
-  transform: translateY(1rem);
   transition: all 700ms ease;
   &.sticky {
     position: sticky;

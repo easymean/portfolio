@@ -11,9 +11,23 @@ export const BooksMobile = () => {
   const cards = data.map((el) => ({
     id: el.id,
     content: (
-      <Card className="book-mobile-card" title={el.title} footer={<></>}></Card>
+      <Card
+        className="book-mobile-card"
+        title={el.title}
+        footer={
+          <div className="footer">
+            <button type="button" onClick={() => moveTo(el.link)}>
+              <Icon.addPlus width="52" height="52" />
+            </button>
+          </div>
+        }
+      ></Card>
     ),
   }));
+
+  const moveTo = (link: string) => {
+    window.open(link);
+  };
 
   const onClickLeft = useCallback((curIdx: number) => {
     const nextIdx = Math.max(0, curIdx - 1);

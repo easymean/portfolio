@@ -30,5 +30,11 @@
 
 .book-mobile-card {
   width: 22rem;
-  height: 25rem;
+  height: 20rem;
+  position: relative;
+  .footer {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+  }
 }
