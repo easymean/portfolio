@@ -1,9 +1,10 @@
 import { Tab } from '@/components/tab';
 import { Carousel } from '@/components/carousel';
 import './style.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Icon from '@/components/icon';
 import { data } from './data';
+import { Section, SectionHeader, SectionBody } from '@/components/section';
 
 export const Skills = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
@@ -33,45 +34,26 @@ export const Skills = () => {
     setSelectedIdx(findIdx);
   };
 
-  const observer = useRef<IntersectionObserver>();
-  const observeTarget = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    observer.current = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          observeTarget.current?.classList.add('move-in');
-        } else {
-          observeTarget.current?.classList.remove('move-in');
-        }
-      },
-      {
-        threshold: 0.6,
-      },
-    );
-
-    if (observer.current && observeTarget.current) {
-      observer.current.observe(observeTarget.current);
-      return () => {
-        observer.current?.disconnect();
-      };
-    }
-  }, []);
-
   return (
-    <div className="skills">
-      <div className="skills-wrapper" ref={observeTarget}>
-        <div className="title">SKILLS</div>
-        <Carousel
-          items={sliders}
-          selectedIdx={selectedIdx}
-          colWidth={'30rem'}
-        />
-        <div className="tab-wrapper">
-          <Tab items={items} onClickItem={onClickTab} />
+    <Section>
+      <SectionHeader>
+        <div className="skill-title">SKILLS</div>
+      </SectionHeader>
+      <SectionBody>
+        <div className="skills">
+          <div className="skills-wrapper">
+            <Carousel
+              items={sliders}
+              selectedIdx={selectedIdx}
+              colWidth={'30rem'}
+            />
+            <div className="tab-wrapper">
+              <Tab items={items} onClickItem={onClickTab} />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </SectionBody>
+    </Section>
   );
 };
 

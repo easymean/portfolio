@@ -5,18 +5,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  transform: translateY(1rem);
-  transition: all 0.7s ease-in-out;
-  .title {
-    padding: 2rem;
-    box-sizing: border-box;
-    @include text-title-2-b;
-  }
-  &.move-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+.skill-title {
+  padding: 2rem;
+  box-sizing: border-box;
+  @include text-title-2-b;
 }
 
 .slider-wrapper {
