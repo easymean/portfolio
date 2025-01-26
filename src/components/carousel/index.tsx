@@ -8,18 +8,9 @@ type Props = {
   onSlide?: (nextIdx: number) => void;
 };
 
-export const Carousel = ({
-  items = [],
-  colWidth,
-  selectedIdx = 0,
-  onSlide,
-}: Props) => {
+export const Carousel = ({ items = [], colWidth, selectedIdx = 0 }: Props) => {
   const rootRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const prevTouch = useRef<{ pageX: number; time: number }>({
-    pageX: 0,
-    time: 0,
-  });
+  const containerRef = useRef<HTMLUListElement>(null);
 
   const validatePage = useCallback(
     (nextPage: number) => {
@@ -65,58 +56,13 @@ export const Carousel = ({
     }
   }, [selectedIdx, slidePage]);
 
-  const handleTouchStart = (e: TouchEvent) => {
-    e.preventDefault();
-    const startX = e.touches[0].pageX;
-    const startTime = performance.now();
-    prevTouch.current = {
-      pageX: startX,
-      time: startTime,
-    };
-  };
-
-  const handleTouchEnd = useCallback(
-    (e: TouchEvent) => {
-      e.preventDefault();
-      if (!containerRef.current) return;
-      const endX = e.changedTouches[0].pageX;
-      const endTime = performance.now();
-      const dist = endX - prevTouch.current.pageX;
-      const time = endTime - prevTouch.current.time;
-      const speed = Math.abs(dist / time) * 10;
-
-      if (Math.abs(dist) < 1) return;
-
-      const diff = dist > 0 ? -1 : 1;
-      let nextPage = selectedIdx + diff;
-      if (speed > 5) {
-        nextPage += diff;
-      }
-      const targetPage = validatePage(nextPage);
-      if (typeof onSlide === 'function') onSlide(targetPage);
-    },
-    [selectedIdx, onSlide, validatePage],
-  );
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('touchstart', handleTouchStart);
-      container.addEventListener('touchend', handleTouchEnd);
-      return () => {
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchend', handleTouchEnd);
-      };
-    }
-  }, [handleTouchEnd]);
-
   return (
     <div className="carousel" ref={rootRef}>
       <div className="scroll-container">
-        <div className="carousel-list" ref={containerRef}>
+        <ul className="carousel-list" role="list" ref={containerRef}>
           {items.length > 0 &&
             items.map((el, idx) => (
-              <div
+              <li
                 key={el.id}
                 id={el.id}
                 className="carousel-item"
@@ -124,9 +70,9 @@ export const Carousel = ({
                 style={{ width: `${colWidth}px` }}
               >
                 {el.content}
-              </div>
+              </li>
             ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
