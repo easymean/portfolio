@@ -12,23 +12,12 @@
     box-sizing: border-box;
     @include text-title-2-b;
   }
-  .carousel-container {
+  .slider-container {
     padding-top: 5rem;
-  }
-  .carousel-controller {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    button {
-      width: 2rem;
-      height: 2rem;
-    }
   }
 }
 
-.book-mobile-card {
+.books-mobile-card {
   width: 22rem;
   height: 20rem;
   position: relative;

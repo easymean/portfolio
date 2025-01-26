@@ -6,9 +6,10 @@ import Icon from '@/components/icon';
 type Props = {
   colWidth: string;
   items: { id: string; content: React.ReactNode }[];
+  onScroll?: (nextPage: number) => void;
 };
 
-export const Slider = ({ items = [], colWidth }: Props) => {
+export const Slider = ({ items = [], colWidth, onScroll }: Props) => {
   const [curPage, setCurPage] = useState<number>(0);
   const [offset, setOffset] = useState<number>(0);
 
@@ -62,8 +63,12 @@ export const Slider = ({ items = [], colWidth }: Props) => {
       const page = Math.ceil(Math.abs(posX) / offset);
       const nextPage = validatePage(page);
       setCurPage(nextPage);
+
+      if (typeof onScroll === 'function') {
+        onScroll(nextPage);
+      }
     },
-    [validatePage, offset],
+    [validatePage, offset, onScroll],
   );
 
   useEffect(() => {
