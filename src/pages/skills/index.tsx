@@ -9,12 +9,12 @@ import { Section, SectionHeader, SectionBody } from '@/components/section';
 export const Skills = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
-  const items = data.map((el) => ({
+  const tabs = data.map((el) => ({
     ...el,
     content: <div className="tab-panel-wrapper">{el.content}</div>,
   }));
 
-  const sliders = [
+  const carousels = [
     {
       id: 'fe',
       content: <FeContent />,
@@ -43,12 +43,12 @@ export const Skills = () => {
         <div className="skills">
           <div className="skills-wrapper">
             <Carousel
-              items={sliders}
+              items={carousels}
               selectedIdx={selectedIdx}
               colWidth={'30rem'}
             />
             <div className="tab-wrapper">
-              <Tab items={items} onClickItem={onClickTab} />
+              <Tab items={tabs} onClickItem={onClickTab} />
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ const FeContent = () => {
     { id: 'vue', icon: <Icon.vue width="100" height="100" /> },
   ];
   return (
-    <div className="slider-wrapper">
+    <div className="carousel-wrapper">
       <div className="grid fe">
         {fe
           .filter((el) => el.icon !== null)
@@ -89,7 +89,7 @@ const BeContent = () => {
     { id: 'typeorm' },
   ];
   return (
-    <div className="slider-wrapper">
+    <div className="carousel-wrapper">
       <div className="grid be">
         {be
           .filter((el) => el.icon !== null)
@@ -109,7 +109,7 @@ const DbContent = () => {
     { id: 'mariadb', icon: <Icon.mariadb width="200" height="150" /> },
   ];
   return (
-    <div className="slider-wrapper">
+    <div className="carousel-wrapper">
       <div className="grid be">
         {db
           .filter((el) => el.icon !== null)
