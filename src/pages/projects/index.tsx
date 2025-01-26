@@ -4,6 +4,9 @@ import './style.scss';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { data } from './data';
 import { Card } from '@/components/card';
+import { Section, SectionBody, SectionHeader } from '@/components/section';
+import { Sticky } from './sticky-content';
+import { initCheckPoints, initProjects } from './utils';
 
 type Checkpoint = {
   companyId: string;
@@ -40,34 +43,16 @@ export const Projects = () => {
 
   useEffect(() => {
     const initDataList = () => {
-      const newCheckpoints: Checkpoint[] = [];
-      const projects = data.reduce<{ id: string; content: JSX.Element }[]>(
-        (acc, cur) => {
-          const add = { companyId: cur.id, groupId: '', projectId: '' };
-
-          cur.groups.forEach((group) => {
-            newCheckpoints.push({
-              ...add,
-              groupId: group.id,
-              projectId: group.projects[0].id,
-            });
-            acc = [
-              ...acc,
-              ...group.projects.map((el) => ({
+      const projects = initProjects(data).map((el) => ({
                 id: el.id,
                 content: (
                   <Card title={el.title} className="project-card-container">
                     <p>{el.description}</p>
                   </Card>
                 ),
-              })),
-            ];
-          });
-          return acc;
-        },
-        [],
-      );
-      setCheckpoints([...newCheckpoints]);
+      }));
+      const newCheckpoints = initCheckPoints(data);
+      setCheckpoints(newCheckpoints);
       setProjects(projects);
     };
     initDataList();

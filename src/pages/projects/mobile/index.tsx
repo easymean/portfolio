@@ -4,6 +4,7 @@ import { Carousel } from '@/components/carousel';
 import { data } from '@/pages/projects/data';
 import Icon from '@/components/icon';
 import { Card } from '@/components/card';
+import { initCheckPoints, initProjects } from '../utils';
 
 type Checkpoint = {
   companyId: string;
@@ -68,34 +69,16 @@ export const ProjectsMobile = () => {
 
   useEffect(() => {
     const initDataList = () => {
-      const newCheckpoints: Checkpoint[] = [];
-      const projects = data.reduce<{ id: string; content: JSX.Element }[]>(
-        (acc, cur) => {
-          const add = { companyId: cur.id, groupId: '', projectId: '' };
-
-          cur.groups.forEach((group) => {
-            newCheckpoints.push({
-              ...add,
-              groupId: group.id,
-              projectId: group.projects[0].id,
-            });
-            acc = [
-              ...acc,
-              ...group.projects.map((el) => ({
-                id: el.id,
-                content: (
-                  <Card title={el.title} className="project-mobile-card">
-                    <p>{el.description}</p>
-                  </Card>
-                ),
-              })),
-            ];
-          });
-          return acc;
-        },
-        [],
-      );
-      setCheckpoints([...newCheckpoints]);
+      const projects = initProjects(data).map((el) => ({
+        id: el.id,
+        content: (
+          <Card title={el.title} className="project-mobile-card">
+            <p>{el.description}</p>
+          </Card>
+        ),
+      }));
+      const newCheckpoints = initCheckPoints(data);
+      setCheckpoints(newCheckpoints);
       setProjects(projects);
       setSelectedIdx(0);
       setGroupInfo(projects[0].id, [...newCheckpoints]);
