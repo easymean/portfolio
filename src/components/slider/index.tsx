@@ -10,11 +10,10 @@ type Props = {
 
 export const Slider = ({ items = [], colWidth }: Props) => {
   const [curPage, setCurPage] = useState<number>(0);
+  const [offset, setOffset] = useState<number>(0);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
-
-  const [offset, setOffset] = useState<number>(0);
 
   const validatePage = useCallback(
     (nextPage: number) => {
@@ -57,6 +56,7 @@ export const Slider = ({ items = [], colWidth }: Props) => {
 
   const handleScroll = useCallback(
     (e: Event) => {
+      if (!offset) return;
       const posX = (e.target as HTMLElement).scrollLeft;
 
       const page = Math.ceil(Math.abs(posX) / offset);
@@ -76,23 +76,48 @@ export const Slider = ({ items = [], colWidth }: Props) => {
     }
   }, [handleScroll]);
 
-  const resizeCenter = useCallback(() => {
-    const offset = calLenCss('4rem') + calLenCss(colWidth);
-    setOffset(offset);
-  }, [colWidth]);
+  const resizeCenter = useCallback(
+    (container: HTMLElement) => {
+      const initOffset = () => {
+        // offset 초기화
+        const offset = calLenCss('4rem') + calLenCss(colWidth);
+        setOffset(offset);
+      };
+
+      initOffset();
+
+      const initPaddingX = () => {
+        const [target] = [...container.querySelectorAll('.slider-item')].filter(
+          (_, idx) => idx === curPage,
+        );
+
+        if (target instanceof HTMLElement) {
+          const rect = container.getBoundingClientRect();
+          const width = rect.width;
+
+          listRef.current?.style.setProperty(
+            '--padding-x',
+            `calc((${width}px - ${colWidth}) / 2)`,
+          );
+        }
+      };
+      initPaddingX();
+    },
+    [colWidth, curPage],
+  );
 
   useEffect(() => {
     if (scrollRef.current) {
       const container = scrollRef.current;
-      resizeCenter();
+      resizeCenter(container);
 
       window.addEventListener('resize', () => {
-        resizeCenter();
+        resizeCenter(container);
       });
 
       return () => {
         window.removeEventListener('resize', () => {
-          resizeCenter();
+          resizeCenter(container);
         });
       };
     }
