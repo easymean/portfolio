@@ -1,4 +1,4 @@
-type DataType = {
+export type DataType = {
   id: string;
   title: string;
   groups: {
