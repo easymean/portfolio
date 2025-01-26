@@ -1,45 +1,5 @@
 .projects {
   position: relative;
-  .title {
-    padding: 2rem;
-    padding-top: 5rem;
-    box-sizing: border-box;
-    @include text-title-2-b;
-  }
-  .company {
-    margin: 3rem 0;
-    @include text-title-2-b;
-  }
-  .group {
-    margin-top: 2rem;
-    @include text-normal-3-r;
-  }
-  .sticky-wrapper {
-    position: sticky;
-    inset: 0;
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: all 700ms ease;
-    &.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .scroll-container {
-    display: grid;
-    padding: 15rem 3rem 50rem 3rem;
-    row-gap: 3rem;
-    position: relative;
-    z-index: 1;
-    .hidden {
-      position: sticky;
-      height: 10rem;
-      width: 100%;
-      left: 0;
-      top: 50rem;
-      z-index: -1;
-    }
-  }
   .projects-wrapper {
     padding-top: 5rem;
     box-sizing: border-box;
@@ -60,4 +20,16 @@
 
 .project-card-container {
   width: 100%;
+}
+
+.projects-header-sticky {
+  position: sticky;
+  top: var(--header-height);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.projects-body {
+  position: relative;
+  z-index: 0;
 }

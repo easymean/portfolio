@@ -1,0 +1,34 @@
+.sticky-content {
+  position: sticky;
+  top: calc(var(--header-height) + 8.25rem + 3rem);
+  opacity: 0;
+  transform: translateY(-1rem);
+  &.fade-in {
+    opacity: 1;
+    transition: all 200ms ease-in-out;
+    transform: translateY(0);
+  }
+  .text-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .company {
+    @include text-title-2-b;
+  }
+  .group {
+    @include text-normal-3-r;
+  }
+}
+
+.fade-text {
+  transform: translateY(-1rem);
+  &.fade-out {
+    opacity: 0;
+  }
+  &.fade-in {
+    transition: all 200ms ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

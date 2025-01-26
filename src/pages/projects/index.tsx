@@ -1,11 +1,10 @@
-import { FadeText } from '@/components/fade-text';
-import { ScrollContainer } from './ScrollContainer';
+import { StickyScroll } from './sticky-scroll';
 import './style.scss';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { data } from './data';
 import { Card } from '@/components/card';
 import { Section, SectionBody, SectionHeader } from '@/components/section';
-import { Sticky } from './sticky-content';
+import { StickyContent } from './sticky-content';
 import { initCheckPoints, initProjects } from './utils';
 
 type Checkpoint = {
@@ -44,12 +43,17 @@ export const Projects = () => {
   useEffect(() => {
     const initDataList = () => {
       const projects = initProjects(data).map((el) => ({
-                id: el.id,
-                content: (
-                  <Card title={el.title} className="project-card-container">
-                    <p>{el.description}</p>
-                  </Card>
-                ),
+        id: el.id,
+        content: (
+          <Card
+            key={el.id}
+            id={el.id}
+            title={el.title}
+            className="project-card-container"
+          >
+            <p>{el.description}</p>
+          </Card>
+        ),
       }));
       const newCheckpoints = initCheckPoints(data);
       setCheckpoints(newCheckpoints);
@@ -98,23 +102,26 @@ export const Projects = () => {
   }, []);
 
   return (
-    <div className="projects" ref={containerRef}>
-      <div className="projects-wrapper">
-        <div className="left">
-          <div className="sticky-wrapper" ref={stickyRef}>
-            <div className="title">PROJECTS</div>
-            <FadeText text={company} classname="company" />
-            <FadeText text={group} classname="group" />
+    <Section>
+      <SectionHeader className="projects-header-sticky">
+        <div className="title">PROJECTS</div>
+      </SectionHeader>
+      <SectionBody className="projects-body">
+        <div className="projects" ref={containerRef}>
+          <div className="projects-wrapper">
+            <div className="left">
+              <StickyContent ref={stickyRef} company={company} group={group} />
+            </div>
+            <div className="right">
+              <StickyScroll
+                projects={projects}
+                observeTargetIds={checkpoints.map((el) => el.projectId)}
+                isIntersecting={isIntersecting}
+              />
+            </div>
           </div>
         </div>
-        <div className="right">
-          <ScrollContainer
-            projects={projects}
-            observeTargetIds={checkpoints.map((el) => el.projectId)}
-            isIntersecting={isIntersecting}
-          />
-        </div>
-      </div>
-    </div>
+      </SectionBody>
+    </Section>
   );
 };

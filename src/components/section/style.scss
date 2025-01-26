@@ -12,4 +12,9 @@
     transform: translateY(0);
     opacity: 1;
   }
+  .title {
+    padding: 2rem;
+    box-sizing: border-box;
+    @include text-title-2-b;
+  }
 }

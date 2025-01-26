@@ -3,9 +3,10 @@ import './style.scss';
 
 type Props = {
   children: React.ReactNode;
+  className?: string;
 };
 
-const SectionHeader = ({ children }: Props) => {
+const SectionHeader = ({ children, className }: Props) => {
   const observer = useRef<IntersectionObserver>();
   const observeTarget = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ const SectionHeader = ({ children }: Props) => {
   }, []);
 
   return (
-    <header className="section-header">
+    <header className={`section-header ${className}`}>
       <div className="section-header-wrapper" ref={observeTarget}>
         {children}
       </div>
@@ -40,12 +41,12 @@ const SectionHeader = ({ children }: Props) => {
   );
 };
 
-const SectionBody = ({ children }: Props) => {
-  return <div className="section-body">{children}</div>;
+const SectionBody = ({ children, className }: Props) => {
+  return <div className={`section-body ${className}`}>{children}</div>;
 };
 
-const Section = ({ children }: Props) => {
-  return <section className="section">{children}</section>;
+const Section = ({ children, className }: Props) => {
+  return <section className={`section ${className}`}>{children}</section>;
 };
 
 export { Section, SectionHeader, SectionBody };

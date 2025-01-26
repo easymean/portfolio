@@ -1,0 +1,15 @@
+.project-sticky-scroll {
+  display: grid;
+  padding: 15rem 3rem 50rem 3rem;
+  row-gap: 3rem;
+  position: relative;
+  z-index: 1;
+  .hidden {
+    position: sticky;
+    height: 10rem;
+    width: 100%;
+    left: 0;
+    top: 50rem;
+    z-index: -1;
+  }
+}

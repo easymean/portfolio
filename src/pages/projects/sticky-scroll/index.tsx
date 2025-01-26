@@ -10,7 +10,7 @@ type Props = {
   isIntersecting: (projectId: string) => void;
 };
 
-export const ScrollContainer = ({
+export const StickyScroll = ({
   projects,
   observeTargetIds,
   isIntersecting,
@@ -47,13 +47,9 @@ export const ScrollContainer = ({
     };
   }, [observeTargetIds, isIntersecting]);
   return (
-    <div className="scroll-container" ref={scrollRef}>
+    <div className="project-sticky-scroll" ref={scrollRef}>
       <div className="hidden" ref={rootRef} />
-      {projects.map((el) => (
-        <div key={el.id} id={el.id} className="project-card">
-          {el.content}
-        </div>
-      ))}
+      {projects.map((el) => el.content)}
     </div>
   );
 };
