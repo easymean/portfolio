@@ -37,7 +37,7 @@ export const Skills = () => {
   return (
     <Section>
       <SectionHeader>
-        <div className="skill-title">SKILLS</div>
+        <div className="title">SKILLS</div>
       </SectionHeader>
       <SectionBody>
         <div className="skills">

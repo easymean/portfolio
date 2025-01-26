@@ -1,5 +1,8 @@
 .layout {
   padding: 0 10rem;
+  @include tablet {
+    padding: 0 5rem;
+  }
   @include mobile {
     padding: 0;
   }
