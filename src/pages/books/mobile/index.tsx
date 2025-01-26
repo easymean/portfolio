@@ -3,6 +3,7 @@ import './style.scss';
 import Icon from '@/components/icon';
 import { Card } from '@/components/card';
 import { Slider } from '@/components/slider';
+import { Section, SectionBody, SectionHeader } from '@/components/section';
 
 export const BooksMobile = () => {
   const cards = data.map((el) => ({
@@ -27,13 +28,15 @@ export const BooksMobile = () => {
   };
 
   return (
-    <div className="books-mobile">
-      <div className="books-mobile-wrapper">
+    <Section className="books-mobile">
+      <SectionHeader>
         <div className="title">BOOKS</div>
-        <div className="slider-container">
+      </SectionHeader>
+      <SectionBody>
+        <div className="books-mobile-wrapper">
           <Slider items={cards} colWidth={'22rem'} />
         </div>
-      </div>
-    </div>
+      </SectionBody>
+    </Section>
   );
 };

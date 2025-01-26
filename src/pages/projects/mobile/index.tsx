@@ -4,6 +4,7 @@ import { data } from '@/pages/projects/data';
 import { Card } from '@/components/card';
 import { initCheckPoints, initProjects } from '../utils';
 import { Slider } from '@/components/slider';
+import { Section, SectionBody, SectionHeader } from '@/components/section';
 
 type Checkpoint = {
   companyId: string;
@@ -68,15 +69,19 @@ export const ProjectsMobile = () => {
   }, []);
 
   return (
-    <div className="projects-mobile">
-      <div className="projects-wrapper">
+    <Section className="projects-mobile">
+      <SectionHeader>
         <div className="title">PROJECTS</div>
-        <div className="description">
-          <div className="company">{company}</div>
-          <div className="group">{group}</div>
+      </SectionHeader>
+      <SectionBody>
+        <div className="projects-wrapper">
+          <div className="description">
+            <div className="company">{company}</div>
+            <div className="group">{group}</div>
+          </div>
+          <Slider items={projects} colWidth={'22rem'} onScroll={handleScroll} />
         </div>
-        <Slider items={projects} colWidth={'22rem'} onScroll={handleScroll} />
-      </div>
-    </div>
+      </SectionBody>
+    </Section>
   );
 };
