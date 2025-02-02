@@ -26,28 +26,28 @@ export const Books = () => {
   };
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLUListElement>(null);
 
   const observer = useRef<IntersectionObserver>();
   useEffect(() => {
     const setContainerHeight = () => {
-      if (!scrollRef.current || !containerRef.current || !stickyRef.current) {
+      if (!scrollRef.current || !containerRef.current) {
         return;
       }
+
       const scrollHeight = scrollRef.current.offsetWidth;
       containerRef.current.style.height = `${scrollHeight}px`;
     };
 
     const setTranslateX = () => {
-      if (!scrollRef.current || !containerRef.current || !stickyRef.current) {
+      if (!scrollRef.current || !containerRef.current) {
         return;
       }
 
       const rect = containerRef.current.getBoundingClientRect();
       const scrollOffset = -rect.top;
       const maxTranslateX =
-        scrollRef.current.offsetWidth - stickyRef.current.offsetWidth;
+        scrollRef.current.offsetWidth - containerRef.current.offsetWidth;
       const translateX = Math.min(maxTranslateX, Math.max(0, scrollOffset));
       scrollRef.current.style.transform = `translateX(-${translateX}px)`;
     };
@@ -91,12 +91,10 @@ export const Books = () => {
       </SectionHeader>
       <SectionBody>
         <div ref={containerRef}>
-          <div className="books-wrapper sticky" ref={stickyRef}>
-            <div className="scroll-container">
-              <ul className="card-grid-list" ref={scrollRef}>
-                {cards}
-              </ul>
-            </div>
+          <div className="scroll-container sticky">
+            <ul className="card-grid-list" ref={scrollRef}>
+              {cards}
+            </ul>
           </div>
         </div>
       </SectionBody>

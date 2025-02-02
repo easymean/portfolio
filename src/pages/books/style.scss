@@ -7,7 +7,7 @@
   top: var(--header-height);
 }
 
-.books-wrapper {
+.scroll-container {
   transition: all 700ms ease;
   &.sticky {
     padding-top: 20rem;
@@ -16,13 +16,11 @@
     left: 0;
     overflow-x: hidden;
   }
-  .scroll-container {
-    .card-grid-list {
-      display: inline-grid;
-      padding: 0 5rem;
-      grid-gap: 3rem;
-      grid-auto-flow: column;
-    }
+  .card-grid-list {
+    display: inline-grid;
+    padding: 0 5rem;
+    grid-gap: 3rem;
+    grid-auto-flow: column;
   }
 }
 
