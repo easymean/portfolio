@@ -3,6 +3,7 @@ import { data } from './data';
 import './style.scss';
 import { useEffect, useRef } from 'react';
 import Icon from '@/components/icon';
+import { Section, SectionBody, SectionHeader } from '@/components/section';
 
 export const Books = () => {
   const cards = data.map((el) => (
@@ -34,11 +35,7 @@ export const Books = () => {
       if (!scrollRef.current || !containerRef.current || !stickyRef.current) {
         return;
       }
-      const scrollHeight =
-        scrollRef.current.offsetWidth -
-        stickyRef.current.offsetWidth +
-        stickyRef.current.offsetHeight;
-
+      const scrollHeight = scrollRef.current.offsetWidth;
       containerRef.current.style.height = `${scrollHeight}px`;
     };
 
@@ -46,7 +43,9 @@ export const Books = () => {
       if (!scrollRef.current || !containerRef.current || !stickyRef.current) {
         return;
       }
-      const scrollOffset = window.scrollY - containerRef.current.offsetTop;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const scrollOffset = -rect.top;
       const maxTranslateX =
         scrollRef.current.offsetWidth - stickyRef.current.offsetWidth;
       const translateX = Math.min(maxTranslateX, Math.max(0, scrollOffset));
@@ -86,15 +85,21 @@ export const Books = () => {
     };
   }, []);
   return (
-    <div className="books" ref={containerRef}>
-      <div className="books-wrapper sticky" ref={stickyRef}>
-        <div className="title">BOOKS</div>
-        <div className="scroll-container">
-          <ul className="card-grid-list" ref={scrollRef}>
-            {cards}
-          </ul>
+    <Section className="books">
+      <SectionHeader className="books-header-sticky">
+        <div className="title">STUDY</div>
+      </SectionHeader>
+      <SectionBody>
+        <div ref={containerRef}>
+          <div className="books-wrapper sticky" ref={stickyRef}>
+            <div className="scroll-container">
+              <ul className="card-grid-list" ref={scrollRef}>
+                {cards}
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </SectionBody>
+    </Section>
   );
 };
